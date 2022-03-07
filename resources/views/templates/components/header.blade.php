@@ -28,10 +28,10 @@
                         <a href="{{ route('team') }}">TEAM</a>
                     </li>
                     <li class="menu-item dropdown">
-                        <a href="gallery.html">GALLERY</a>
+                        <a href="{{ route('gallery') }}">GALLERY</a>
                     </li>
                     <li class="menu-item">
-                        <a href="contact.html">CONTACT US</a>
+                        <a href="{{ route('contact') }}">CONTACT US</a>
                     </li>
                     <li class="menu-item dropdown">
                         <a href="#">ELEMENTS</a>

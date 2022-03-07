@@ -35,7 +35,7 @@
 </head>
 
 <body>
-    @yield('content')
+    @yield('main')
 
 
 
