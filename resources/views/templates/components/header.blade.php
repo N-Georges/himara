@@ -4,7 +4,7 @@
             <!-- BRAND -->
             <div class="brand">
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="{{ route('home') }}">
                         <img src="{{ asset('himara/images/logo.svg') }}" alt="Hotel Himara">
                     </a>
                 </div>
@@ -19,10 +19,10 @@
             <nav id="main-menu" class="main-menu">
                 <ul class="menu">
                     <li class="menu-item dropdown active">
-                        <a href="index.html">HOME</a>
+                        <a href="{{ route('home') }}">HOME</a>
                     </li>
                     <li class="menu-item dropdown">
-                        <a href="rooms-list.html">ROOMS</a>
+                        <a href="{{ route('room-list') }}">ROOMS</a>
                     </li>
                     <li class="menu-item dropdown">
                         <a href="staff.html">TEAM</a>

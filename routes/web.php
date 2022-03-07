@@ -15,7 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
+
+Route::get('/room-list', function () {
+    return view('room-list');
+})->name('room-list');
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
