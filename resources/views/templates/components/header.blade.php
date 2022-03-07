@@ -25,7 +25,7 @@
                         <a href="{{ route('room-list') }}">ROOMS</a>
                     </li>
                     <li class="menu-item dropdown">
-                        <a href="staff.html">TEAM</a>
+                        <a href="{{ route('team') }}">TEAM</a>
                     </li>
                     <li class="menu-item dropdown">
                         <a href="gallery.html">GALLERY</a>

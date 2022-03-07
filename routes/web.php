@@ -21,6 +21,10 @@ Route::get('/room-list', function () {
     return view('room-list');
 })->name('room-list');
 
+Route::get('/team', function () {
+    return view('team');
+})->name('team');
+
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth'])->name('dashboard');
