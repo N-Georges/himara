@@ -25,8 +25,8 @@ Route::controller(FrontController::class)
         Route::get('/team', 'team')->name('team');
         Route::get('/gallery', 'gallery')->name('gallery');
         Route::get('/contact', 'contact')->name('contact');
-        Route::get('/booking-form', 'booking_form')->name('booking-form');
-        Route::get('/dashboard', 'dashboard')->middleware(['auth'])->name('dashboard');
+        Route::get('/booking-form', 'booking_form')->middleware(['auth'])->name('booking-form');
+        Route::get('/dashboard', 'dashboard')->middleware(['auth', 'IsAdmin'])->name('dashboard');
     });
 
 require __DIR__ . '/auth.php';

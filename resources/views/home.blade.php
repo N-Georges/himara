@@ -1,4 +1,7 @@
 @extends('layouts.index')
+@section('title')
+    Hotel Himara - Home
+@endsection
 @section('main')
     <!-- ========== PRELOADER ========== -->
     @include('templates.components.preloader')
