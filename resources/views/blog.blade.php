@@ -3,5 +3,5 @@
     <!-- ========== PAGE TITLE ========== -->
     @include('templates.components.page-title')
     <!-- ========== MAIN ========== -->
-    @include('templates.components.contact.main')
+    @include('templates.components.blog.main')
 @endsection

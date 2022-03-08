@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,28 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
 
-Route::get('/room-list', function () {
-    return view('room-list');
-})->name('room-list');
 
-Route::get('/team', function () {
-    return view('team');
-})->name('team');
+// ROUTE GROUP FOR FRONTCONTROLLER
+Route::controller(FrontController::class)
+    ->group(function () {
+        Route::get('/', 'home')->name('home');
+        Route::get('/room-list', 'room_list')->name('room-list');
+        Route::get('/blog', 'blog')->name('blog');
+        Route::get('/team', 'team')->name('team');
+        Route::get('/gallery', 'gallery')->name('gallery');
+        Route::get('/contact', 'contact')->name('contact');
+        Route::get('/booking-form', 'booking_form')->name('booking-form');
+        Route::get('/dashboard', 'dashboard')->middleware(['auth'])->name('dashboard');
+    });
 
-Route::get('/gallery', function () {
-    return view('gallery');
-})->name('gallery');
-
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
-
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

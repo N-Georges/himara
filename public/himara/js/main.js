@@ -2103,9 +2103,9 @@ Version:       1.1.0
     function initialize() {
       var map;
       var panorama;
-      var var_latitude = 39.7715865; // Google Map Latitude
-      var var_longitude = 19.997841; // Google Map Longitude
-      var pin = 'images/icons/pin.svg';
+      var var_latitude = 50.855545520427604; // Google Map Latitude
+      var var_longitude = 4.341250284033105; // Google Map Longitude
+      var pin = 'himara/images/icons/pin.svg';
 
       //Map pin-window details
       var title = "Hotel Himara - Click to see";

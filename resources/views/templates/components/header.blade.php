@@ -25,6 +25,9 @@
                         <a href="{{ route('room-list') }}">ROOMS</a>
                     </li>
                     <li class="menu-item dropdown">
+                        <a href="{{ route('blog') }}">Blog</a>
+                    </li>
+                    <li class="menu-item dropdown">
                         <a href="{{ route('team') }}">TEAM</a>
                     </li>
                     <li class="menu-item dropdown">
@@ -33,22 +36,8 @@
                     <li class="menu-item">
                         <a href="{{ route('contact') }}">CONTACT US</a>
                     </li>
-                    <li class="menu-item dropdown">
-                        <a href="#">ELEMENTS</a>
-                        <ul class="submenu">
-                            <li class="menu-item">
-                                <a href="style-guide.html">Style Guide</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="buttons.html">Buttons</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="icons.html">Icons</a>
-                            </li>
-                        </ul>
-                    </li>
                     <li class="menu-item menu-btn">
-                        <a href="booking-form.html" class="btn">
+                        <a href="{{ route('booking-form') }}" class="btn">
                             <i class="fa fa-user"></i>
                             LOG IN</a>
                     </li>

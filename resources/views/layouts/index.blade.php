@@ -35,44 +35,57 @@
 </head>
 
 <body>
-    @yield('main')
+    <!-- ========== MOBILE MENU ========== -->
+    @include('templates.components.mobile-menu')
+    <div class="wrapper">
+        <!-- ========== TOP MENU ========== -->
+        @include('templates.components.top-menu')
+        <!-- ========== HEADER ========== -->
+        @include('templates.components.header')
+
+        @yield('main')
+        <!-- ========== FOOTER ========== -->
+        @include('templates.components.footer')
+        <!-- ========== BACK TO TOP ========== -->
+        @include('templates.components.back-to-top')
+    </div>
 
 
 
     <!-- ========== JAVASCRIPT ========== -->
-  <script src="{{ asset('himara/js/jquery.min.js') }}"></script>
-  <script src="http://maps.google.com/maps/api/js?key=YOUR_API_KEY"></script>
-  <script src="{{ asset('himara/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('himara/js/bootstrap-select.min.js') }}"></script>
-  <script src="{{ asset('himara/js/jquery.mmenu.js') }}"></script>
-  <script src="{{ asset('himara/js/jquery.inview.min.js') }}"></script>
-  <script src="{{ asset('himara/js/jquery.countdown.min.js') }}"></script>
-  <script src="{{ asset('himara/js/jquery.magnific-popup.min.js') }}"></script>
-  <script src="{{ asset('himara/js/owl.carousel.min.js') }}"></script>
-  <script src="{{ asset('himara/js/owl.carousel.thumbs.min.js') }}"></script>
-  <script src="{{ asset('himara/js/isotope.pkgd.min.js') }}"></script>
-  <script src="{{ asset('himara/js/imagesloaded.pkgd.min.js') }}"></script>
-  <script src="{{ asset('himara/js/masonry.pkgd.min.js') }}"></script>
-  <script src="{{ asset('himara/js/wow.min.js') }}"></script>
-  <script src="{{ asset('himara/js/countup.min.js') }}"></script>
-  <script src="{{ asset('himara/js/moment.min.js') }}"></script>
-  <script src="{{ asset('himara/js/daterangepicker.js') }}"></script>
-  <script src="{{ asset('himara/js/parallax.min.js') }}"></script>
-  <script src="{{ asset('himara/js/smoothscroll.min.js') }}"></script>
-  <script src="{{ asset('himara/js/instafeed.min.js') }}"></script>
-  <script src="{{ asset('himara/js/main.js') }}"></script>
-  <!-- ========== REVOLUTION SLIDER ========== -->
-  <script src="{{ asset('revolution/js/jquery.themepunch.tools.min.js') }}"></script>
-  <script src="{{ asset('revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
-  <script src="{{ asset('revolution/js/extensions/revolution.extension.actions.min.js ')}}"></script>
-  <script src="{{ asset('revolution/js/extensions/revolution.extension.carousel.min.js') }}"></script>
-  <script src="{{ asset('revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
-  <script src="{{ asset('revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
-  <script src="{{ asset('revolution/js/extensions/revolution.extension.migration.min.js') }}"></script>
-  <script src="{{ asset('revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
-  <script src="{{ asset('revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
-  <script src="{{ asset('revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
-  <script src="{{ asset('revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
+    <script src="{{ asset('himara/js/jquery.min.js') }}"></script>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyDkWCHsVOixZWDtRwKEzXcEi1nCZUOdnJY"></script>
+    <script src="{{ asset('himara/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('himara/js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('himara/js/jquery.mmenu.js') }}"></script>
+    <script src="{{ asset('himara/js/jquery.inview.min.js') }}"></script>
+    <script src="{{ asset('himara/js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('himara/js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ asset('himara/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('himara/js/owl.carousel.thumbs.min.js') }}"></script>
+    <script src="{{ asset('himara/js/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('himara/js/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('himara/js/masonry.pkgd.min.js') }}"></script>
+    <script src="{{ asset('himara/js/wow.min.js') }}"></script>
+    <script src="{{ asset('himara/js/countup.min.js') }}"></script>
+    <script src="{{ asset('himara/js/moment.min.js') }}"></script>
+    <script src="{{ asset('himara/js/daterangepicker.js') }}"></script>
+    <script src="{{ asset('himara/js/parallax.min.js') }}"></script>
+    <script src="{{ asset('himara/js/smoothscroll.min.js') }}"></script>
+    <script src="{{ asset('himara/js/instafeed.min.js') }}"></script>
+    <script src="{{ asset('himara/js/main.js') }}"></script>
+    <!-- ========== REVOLUTION SLIDER ========== -->
+    <script src="{{ asset('revolution/js/jquery.themepunch.tools.min.js') }}"></script>
+    <script src="{{ asset('revolution/js/jquery.themepunch.revolution.min.js') }}"></script>
+    <script src="{{ asset('revolution/js/extensions/revolution.extension.actions.min.js ') }}"></script>
+    <script src="{{ asset('revolution/js/extensions/revolution.extension.carousel.min.js') }}"></script>
+    <script src="{{ asset('revolution/js/extensions/revolution.extension.kenburn.min.js') }}"></script>
+    <script src="{{ asset('revolution/js/extensions/revolution.extension.layeranimation.min.js') }}"></script>
+    <script src="{{ asset('revolution/js/extensions/revolution.extension.migration.min.js') }}"></script>
+    <script src="{{ asset('revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
+    <script src="{{ asset('revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
+    <script src="{{ asset('revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
+    <script src="{{ asset('revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
 </body>
 
 </html>
