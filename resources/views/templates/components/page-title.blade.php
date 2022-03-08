@@ -3,12 +3,12 @@
     background-size: cover;">
         <div class="container">
             <div class="inner">
-                <h1>ROOMS</h1>
+                <h1>{{ Route::currentRouteName() }}</h1>
                 <ol class="breadcrumb">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="{{ route('home') }}">Home</a>
                     </li>
-                    <li>Rooms</li>
+                    <li>{{ Route::currentRouteName() }}</li>
                 </ol>
             </div>
         </div>
