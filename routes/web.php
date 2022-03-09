@@ -5,8 +5,10 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\teamController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,6 +63,23 @@ Route::controller(ContactController::class)
     ->group(function () {
         Route::get('/dashboard/contact', 'index')->middleware(['auth', 'IsAdmin'])->name('contact.index');
     });
+
+// ROUTE GROUP FOR PROFILECONTROLLER   
+Route::controller(ProfileController::class)
+    ->group(function () {
+        Route::get('/dashboard/profile', 'index')->middleware(['auth', 'IsAdmin'])->name('profile.index');
+        Route::put('/dashboard/profile/{id}/update', 'update')->middleware(['auth', 'IsAdmin'])->name('profile.update');
+        Route::put('/dashboard/profile/{id}/update/password', 'update_password')->middleware(['auth', 'IsAdmin'])->name('profile-password.update');
+    });
+
+// ROUTE GROUP FOR USERCONTROLLER   
+Route::controller(UserController::class)
+    ->group(function () {
+        Route::get('/dashboard/user', 'index')->middleware(['auth', 'IsAdmin'])->name('user.index');
+    });
+
+
+
 
 
 require __DIR__ . '/auth.php';
