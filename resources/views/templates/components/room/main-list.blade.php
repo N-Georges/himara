@@ -9,7 +9,7 @@
                             <div class="row">
                                 <div class="col-lg-5">
                                     <figure class="gradient-overlay-hover link-icon">
-                                        <a href="room.html"><img src={{ asset('himara/'.$item->image) }}
+                                        <a href="{{ route('room.show', $item->id) }}"><img src={{ asset('himara/'.$item->image) }}
                                                 class="img-fluid" alt="Image"></a>
                                     </figure>
                                 </div>
@@ -50,6 +50,7 @@
                                 </div>
                             </div>
                         @empty
+                        <h1>coming soon</h1>
                         @endforelse
 
                     </div>

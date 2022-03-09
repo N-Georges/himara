@@ -16,6 +16,15 @@ class FrontController extends Controller
         $room = Room::all();
         return view('room-list', compact('room'));
     }
+    public function room_show(Room $id)
+    {
+        return view('room-show', compact('id'));
+    }
+    public function pageTitleRoom_show(Room $id)
+    {
+        return view('templates.components.room.page-title-room', compact('id'));
+    }
+
     public function blog()
     {
         return view('blog');

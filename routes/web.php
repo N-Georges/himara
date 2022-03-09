@@ -29,6 +29,7 @@ Route::controller(FrontController::class)
     ->group(function () {
         Route::get('/', 'home')->name('home');
         Route::get('/room-list', 'room_list')->name('room-list');
+        Route::get('/room-list/{id}/show', 'room_show')->name('room.show');
         Route::get('/blog', 'blog')->name('blog');
         Route::get('/team', 'team')->name('team');
         Route::get('/gallery', 'gallery')->name('gallery');
