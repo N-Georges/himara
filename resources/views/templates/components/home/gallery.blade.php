@@ -4,7 +4,7 @@
         <div class="section-title">
             <h4>HIMARA. <span class="text-himara">GALLERY</span></h4>
             <p class="section-subtitle">Check out our image gallery</p>
-            <a href="gallery.html" class="view-all">View gallery images</a>
+            <a href="{{ route('gallery') }}" class="view-all">View gallery images</a>
         </div>
         <div class="gallery-owl owl-carousel image-gallery">
             <!-- ITEM -->
@@ -19,7 +19,7 @@
             <!-- ITEM -->
             <div class="gallery-item">
                 <figure class="gradient-overlay image-icon">
-                    <a href="images/gallery/gallery2.jpg">
+                    <a href="{{ asset('himara/images/gallery/gallery2.jpg') }}">
                         <img src="{{ asset('himara/images/gallery/gallery2.jpg') }}" alt="Image">
                     </a>
                     <figcaption>Room View</figcaption>
