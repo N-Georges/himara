@@ -7,7 +7,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoomController;
-use App\Http\Controllers\teamController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(FrontController::class)
     ->group(function () {
         Route::get('/', 'home')->name('home');
-        Route::get('/room-list', 'room_list')->name('room-list');
+        Route::get('/room-list', 'room_list')->name('rooms');
         Route::get('/room-list/{id}/show', 'room_show')->name('room.show');
         Route::get('/blog', 'blog')->name('blog');
         Route::get('/team', 'team')->name('team');
@@ -44,22 +44,27 @@ Route::controller(HomeController::class)
     ->group(function () {
         Route::get('/dashboard/home', 'index')->middleware(['auth', 'IsAdmin'])->name('home.index');
     });
+// ROUTE GROUP FOR ROOMCONTROLLER
 Route::controller(RoomController::class)
     ->group(function () {
         Route::get('/dashboard/room', 'index')->middleware(['auth', 'IsAdmin'])->name('room.index');
     });
+// ROUTE GROUP FOR BLOGCONTROLLER
 Route::controller(BlogController::class)
     ->group(function () {
         Route::get('/dashboard/blog', 'index')->middleware(['auth', 'IsAdmin'])->name('blog.index');
     });
-Route::controller(teamController::class)
+// ROUTE GROUP FOR TEAMCONTROLLER
+Route::controller(TeamController::class)
     ->group(function () {
         Route::get('/dashboard/team', 'index')->middleware(['auth', 'IsAdmin'])->name('team.index');
     });
+// ROUTE GROUP FOR GALLERYCONTROLLER
 Route::controller(GalleryController::class)
     ->group(function () {
         Route::get('/dashboard/gallery', 'index')->middleware(['auth', 'IsAdmin'])->name('gallery.index');
     });
+// ROUTE GROUP FOR CONTACTCONTROLLER
 Route::controller(ContactController::class)
     ->group(function () {
         Route::get('/dashboard/contact', 'index')->middleware(['auth', 'IsAdmin'])->name('contact.index');

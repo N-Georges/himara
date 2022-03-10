@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Room;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -14,7 +15,8 @@ class FrontController extends Controller
     public function room_list()
     {
         $room = Room::all();
-        return view('room-list', compact('room'));
+        $tag = Tag::all();
+        return view('room-list', compact('room', 'tag'));
     }
     public function room_show(Room $id)
     {

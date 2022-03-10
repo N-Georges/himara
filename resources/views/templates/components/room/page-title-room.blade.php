@@ -12,7 +12,7 @@
                           <a href="{{ route('home') }}">Home</a>
                       </li>
                       <li>
-                          <a href="{{ route('room-list') }}">Rooms</a>
+                          <a href="{{ route('rooms') }}">Rooms</a>
                       </li>
                       <li>{{ $id->city }}</li>
                   </ol>

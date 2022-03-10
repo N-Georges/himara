@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             RoomSeeder::class,
+            TagSeeder::class,
+            Room_tagSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
     }

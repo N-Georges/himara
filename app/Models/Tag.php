@@ -4,12 +4,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Room extends Model
+class Tag extends Model
 {
     use HasFactory;
 
-    public function tags()
+    public function rooms()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Room::class);
     }
 }

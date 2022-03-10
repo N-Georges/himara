@@ -22,7 +22,7 @@
                         <a href="{{ route('home') }}">HOME</a>
                     </li>
                     <li class="menu-item dropdown {{ Route::is('room-list') ? 'active' : '' }}">
-                        <a href="{{ route('room-list') }}">ROOMS</a>
+                        <a href="{{ route('rooms') }}">ROOMS</a>
                     </li>
                     <li class="menu-item dropdown {{ Route::is('blog') ? 'active' : '' }}">
                         <a href="{{ route('blog') }}">Blog</a>
