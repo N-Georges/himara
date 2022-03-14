@@ -27,7 +27,7 @@
                         </figure>
                         <div class="room-info">
                             <h2 class="room-title">
-                                <a href="room.html">{{ $item->categorie->name }}</a>
+                                <a href="{{ route('room.show', $item->id) }}">{{ $item->categorie->name }}</a>
                             </h2>
                             <p>Enjoy our {{ $item->categorie->name }}</p>
                         </div>

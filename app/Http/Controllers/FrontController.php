@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Categorie;
 use App\Models\Room;
 use App\Models\Tag;
@@ -73,7 +74,14 @@ class FrontController extends Controller
 
     public function blog()
     {
-        return view('blog');
+        $blog = Blog::all();
+        return view('blog', compact('blog'));
+    }
+
+    public function blog_show(Blog $id)
+    {
+        // $blog = Blog::all()->random(3); 
+        return view('blog-show', compact('id'));
     }
     public function team()
     {

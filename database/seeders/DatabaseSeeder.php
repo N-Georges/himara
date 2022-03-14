@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             RoomSeeder::class,
             TagSeeder::class,
             Room_tagSeeder::class,
+            AuthorSeeder::class,
+            BlogSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
     }
