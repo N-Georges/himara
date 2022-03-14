@@ -100,12 +100,13 @@
                       <div class="sidebar">
                           <aside class="widget noborder">
                               <div class="search">
-                                  <form class="widget-search">
-                                      <input type="search" placeholder="Search">
-                                      <button class="btn-search" id="searchsubmit" type="submit">
-                                          <i class="fa fa-search"></i>
-                                      </button>
-                                  </form>
+                                <form class="widget-search" action="{{ route('blog.search') }}" method="POST">
+                                    @csrf
+                                    <input type="search" placeholder="Search" name="search">
+                                    <button class="btn-search" id="searchsubmit" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </form>
                               </div>
                           </aside>
                           <!-- WIDGET -->

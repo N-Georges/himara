@@ -33,7 +33,6 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,600,700%7CRoboto:100,300,400,400i,500,700"
         rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.9.1/cdn.js"></script>
-    @livewireStyles
 </head>
 
 <body>
@@ -89,7 +88,6 @@
     <script src="{{ asset('revolution/js/extensions/revolution.extension.slideanims.min.js') }}"></script>
     <script src="{{ asset('revolution/js/extensions/revolution.extension.video.min.js') }}"></script>
 
-    @livewireScripts
 </body>
 
 </html>

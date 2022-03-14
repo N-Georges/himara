@@ -72,17 +72,30 @@ class FrontController extends Controller
         return view('templates.components.room.page-title-room', compact('id'));
     }
 
+
     public function blog()
     {
         $blog = Blog::all();
         return view('blog', compact('blog'));
     }
 
+
     public function blog_show(Blog $id)
     {
         // $blog = Blog::all()->random(3); 
         return view('blog-show', compact('id'));
     }
+
+    public function blog_search(Request $request)
+    {
+
+        // $tags = Tag::all();
+        $search = '%' . $request->search . '%';
+        $blog = Blog::where('title', 'like', "%$search%")->get();
+        return view("blog", compact("blog"));
+    }
+
+    
     public function team()
     {
         return view('team');

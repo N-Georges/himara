@@ -34,6 +34,7 @@ Route::controller(FrontController::class)
         Route::get('/room-list/tag/{id}', 'room_tag')->name('tag');
         Route::get('/room-list/{id}/show', 'room_show')->name('room.show');
         Route::get('/blog', 'blog')->name('blog');
+        Route::post('/blog', 'blog_search')->name('blog.search');
         Route::get('/blog/{id}/show', 'blog_show')->name('blog.show');
         Route::get('/team', 'team')->name('team');
         Route::get('/gallery', 'gallery')->name('gallery');
