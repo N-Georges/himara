@@ -9,14 +9,15 @@ use Livewire\Component;
 class SearchRoom extends Component
 {
     public $search = '';
-
     public function render()
     {
+        $tag = Tag::all();
         $search = '%' . $this->search . '%';
-        $this->room = Room::where('city', 'like', $search)->get();
-        // $this->room = Room::where('price', 'like', $search)->get();
-        $tag = tag::all();
+        $this->room = Room::where('city', 'like', $search)
+            ->orWhere('price', 'like', $search)
+            ->get();
         return view('livewire.search-room', compact('tag'));
     }
-    
+
 }
+

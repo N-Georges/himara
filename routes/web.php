@@ -29,6 +29,8 @@ Route::controller(FrontController::class)
     ->group(function () {
         Route::get('/', 'home')->name('home');
         Route::get('/room-list', 'room_list')->name('rooms');
+        Route::post('/room-list', 'room_search')->name('room');
+        Route::get('/room-list/tag/{id}', 'room_tag')->name('room');
         Route::get('/room-list/{id}/show', 'room_show')->name('room.show');
         Route::get('/blog', 'blog')->name('blog');
         Route::get('/team', 'team')->name('team');
@@ -38,7 +40,7 @@ Route::controller(FrontController::class)
         Route::get('/dashboard', 'dashboard')->middleware(['auth', 'IsAdmin'])->name('dashboard');
     });
 
-
+    
 // ROUTE GROUP FOR HOMECONTROLLER
 Route::controller(HomeController::class)
     ->group(function () {
@@ -83,9 +85,6 @@ Route::controller(UserController::class)
     ->group(function () {
         Route::get('/dashboard/user', 'index')->middleware(['auth', 'IsAdmin'])->name('user.index');
     });
-
-
-
 
 
 require __DIR__ . '/auth.php';

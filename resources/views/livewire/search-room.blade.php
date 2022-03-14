@@ -26,10 +26,10 @@
                             </span>
                             <p>{{ Str::of($item->description)->words(7) }}</p>
                             <div class="room-services flex-wrap">
-                                @foreach ($item->tags as $tag)
+                                @foreach ($item->tags as $tagp)
                                     <span data-toggle="popover" data-placement="top" data-trigger="hover"
-                                        data-content="{{ $tag->content }}"
-                                        data-original-title="{{ $tag->name }}">{{ $tag->name }}</span>
+                                        data-content="{{ $tagp->content }}"
+                                        data-original-title="{{ $tagp->name }}">{{ $tagp->name }}</span>
                                 @endforeach
                                 {{-- <span>Beds: 1 King</span> --}}
                                 {{-- <span>Max Guests: 2</span> --}}
@@ -130,7 +130,7 @@
             <aside class="widget noborder">
                 <div class="search">
                     <form class="widget-search">
-                        <input wire:model="search" type="search" placeholder="Search">
+                        <input wire:model.debounce.250ms="search" type="search" placeholder="Search city price ...">
                         <button class="btn-search" id="searchsubmit" type="submit">
                             <i class="fa fa-search"></i>
                         </button>
@@ -165,12 +165,11 @@
             <aside class="widget">
                 <h4 class="widget-title">Tags</h4>
                 <div class="tagcloud">
-                    @foreach ($room as $item)
-                        @foreach ($item->tags as $tag)
-                            <a href="#">
-                                <span class="tag">{{ $tag->name }}</span></a>
-                        @endforeach
+                    @foreach ($tag as $t)
+                        <a href={{ route("room.show",$t->id)  }}>
+                            <span class="tag">{{ $t->name }}</span></a>
                     @endforeach
+                    
                 </div>
             </aside>
         </div>
