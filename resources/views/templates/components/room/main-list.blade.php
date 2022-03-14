@@ -95,7 +95,7 @@
                         @endforelse
                     </div>
                     <!-- PAGINATION -->
-                    {{ $room->links('vendor.pagination.custom_pagination') }}
+                    {{ $room->render('vendor.pagination.custom_pagination') }}
                 </div>
                 <div class="col-lg-3 col-12">
                     <div class="sidebar">

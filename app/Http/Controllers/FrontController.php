@@ -17,12 +17,11 @@ class FrontController extends Controller
 
     public function room_list()
     {
-        $room = Room::paginate(2);
+        $room = Room::paginate(5);
         $tags = Tag::all();
         $categorie = Categorie::all();
         return view('room-list', compact('room', 'categorie', 'tags'));
     }
-
 
     public function room_search(Request $request)
     {
@@ -31,18 +30,18 @@ class FrontController extends Controller
         $search = '%' . $request->search . '%';
         $room = Room::where('city', 'like', "%$search%")
             ->orWhere('price', 'like', $search)
-            ->get();
-            $categorie = Categorie::all();
+            ->paginate(100);
+        $categorie = Categorie::all();
         return view("room-list", compact("room", 'categorie', 'tags'));
     }
 
     public function room_categorie($id)
     {
-        $room = Room::where("categorie_id", $id)->get();
+        $room = Room::where("categorie_id", $id)->paginate(100);
         $tags = Tag::all();
         $categorie = Categorie::all();
         // dd($projetTout);
-        return view("room-list",compact("categorie", "room", "tags"));
+        return view("room-list", compact("categorie", "room", "tags"));
     }
 
 
@@ -50,7 +49,9 @@ class FrontController extends Controller
     public function room_tag($id)
     {
         $tagId = Tag::find($id);
-        $room = $tagId->rooms;
+        $room = Room::with('tags')->whereHas('tags', function ($tag) use ($tagId) {
+            $tag->whereIn('name', $tagId);
+        })->paginate(100);
         $tags = Tag::all();
         $categorie = Categorie::all();
         return view("room-list", compact('room', 'categorie', 'tags'));

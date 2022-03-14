@@ -3,7 +3,7 @@
         <ul>
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
-                <li class="disabled" aria-disabled="true"><span>@lang('pagination.previous')</span></li>
+                <li class="disabled" aria-disabled="true"><span></span></li>
             @else
                 <li class="prev-pagination">
                     <a href="{{ $paginator->previousPageUrl() }}">
@@ -42,7 +42,7 @@
                     </a>
                 </li>
             @else
-                <li class="disabled" aria-disabled="true"><span>@lang('pagination.next')</span></li>
+                <li class="disabled" aria-disabled="true"><span></span></li>
             @endif
         </ul>
     </nav>
