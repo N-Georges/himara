@@ -17,7 +17,7 @@ class FrontController extends Controller
 
     public function room_list()
     {
-        $room = Room::all();
+        $room = Room::paginate(2);
         $tags = Tag::all();
         $categorie = Categorie::all();
         return view('room-list', compact('room', 'categorie', 'tags'));

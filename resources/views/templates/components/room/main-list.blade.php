@@ -95,41 +95,7 @@
                         @endforelse
                     </div>
                     <!-- PAGINATION -->
-                    <nav class="pagination">
-                        <ul>
-                            <li class="prev-pagination">
-                                <a href="#">
-                                    &nbsp;<i class="fa fa-angle-left"></i>
-                                    Previous &nbsp;</a>
-                            </li>
-                            <li class="active">
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>...</li>
-                            <li>
-                                <a href="#">7</a>
-                            </li>
-                            <li>
-                                <a href="#">8</a>
-                            </li>
-                            <li>
-                                <a href="#">9</a>
-                            </li>
-                            <li class="next_pagination">
-                                <a href="#">
-                                    &nbsp; Next
-                                    <i class="fa fa-angle-right"></i>
-                                    &nbsp;
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    {{ $room->links('vendor.pagination.custom_pagination') }}
                 </div>
                 <div class="col-lg-3 col-12">
                     <div class="sidebar">

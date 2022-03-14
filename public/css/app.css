@@ -667,17 +667,14 @@ select {
 .top-1 {
   top: 0.25rem;
 }
-.left-4 {
-  left: 1rem;
+.left-3 {
+  left: 0.75rem;
 }
 .top-9 {
   top: 2.25rem;
 }
 .top-0 {
   top: 0px;
-}
-.left-3 {
-  left: 0.75rem;
 }
 .z-0 {
   z-index: 0;
