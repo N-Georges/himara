@@ -8,88 +8,34 @@
         </div>
         <div class="row">
             <!-- ITEM -->
-            <div class="col-md-4">
-                <div class="room-grid-item">
-                    <figure class="gradient-overlay-hover link-icon">
-                        <a href="room.html">
-                            <img src="{{ asset('himara/images/rooms/single/single1.jpg') }}" class="img-fluid" alt="Image">
-                        </a>
-                        <div class="room-services">
-                            <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover" data-placement="right"
-                                data-trigger="hover" data-content="Breakfast Included"
-                                data-original-title="Breakfast"></i>
-                            <i class="fa fa-wifi" aria-hidden="true" data-toggle="popover" data-placement="right"
-                                data-trigger="hover" data-content="Free WiFi" data-original-title="WiFi"></i>
-                            <i class="fa fa-television" data-toggle="popover" data-placement="right"
-                                data-trigger="hover" data-content="Plasma TV with cable channels"
-                                data-original-title="TV"></i>
+            @forelse ($room as $item)
+                <div class="col-md-4">
+                    <div class="room-grid-item">
+                        <figure class="gradient-overlay-hover link-icon">
+                            <a href="{{ route('room.show', $item->id) }}">
+                                <img src={{ asset('himara/' . $item->image) }} class=" img-fluid" alt="Image">
+                            </a>
+                            <div class="room-services">
+                                @foreach ($item->tags as $tag)
+                                    <i class="{{ $tag->icon }}" aria-hidden="true" data-toggle="popover"
+                                        data-placement="right" data-trigger="hover" data-content="{{ $tag->content }}"
+                                        data-original-title="{{ $tag->name }}"></i>
+                                @endforeach
+
+                            </div>
+                            <div class="room-price">€{{ $item->price }} / night</div>
+                        </figure>
+                        <div class="room-info">
+                            <h2 class="room-title">
+                                <a href="room.html">{{ $item->categorie->name }}</a>
+                            </h2>
+                            <p>Enjoy our {{ $item->categorie->name }}</p>
                         </div>
-                        <div class="room-price">€89 / night</div>
-                    </figure>
-                    <div class="room-info">
-                        <h2 class="room-title">
-                            <a href="room.html">Single Room</a>
-                        </h2>
-                        <p>Enjoy our single room</p>
                     </div>
                 </div>
-            </div>
-            <!-- ITEM -->
-            <div class="col-md-4">
-                <div class="room-grid-item">
-                    <figure class="gradient-overlay-hover link-icon">
-                        <a href="room.html">
-                            <img src="{{ asset('himara/images/rooms/double/double.jpg') }}" class="img-fluid" alt="Image">
-                        </a>
-                        <div class="room-services">
-                            <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover" data-placement="right"
-                                data-trigger="hover" data-content="Breakfast Included"
-                                data-original-title="Breakfast"></i>
-                            <i class="fa fa-wifi" aria-hidden="true" data-toggle="popover" data-placement="right"
-                                data-trigger="hover" data-content="Free WiFi" data-original-title="WiFi"></i>
-                            <i class="fa fa-television" data-toggle="popover" data-placement="right"
-                                data-trigger="hover" data-content="Plasma TV with cable channels"
-                                data-original-title="TV"></i>
-                        </div>
-                        <div class="room-price">€129 / night</div>
-                    </figure>
-                    <div class="room-info">
-                        <h2 class="room-title">
-                            <a href="room.html">Double Room</a>
-                        </h2>
-                        <p>Enjoy our double room</p>
-                    </div>
-                </div>
-            </div>
-            <!-- ITEM -->
-            <div class="col-md-4">
-                <div class="room-grid-item">
-                    <figure class="gradient-overlay-hover link-icon">
-                        <a href="room.html">
-                            <img src="{{ asset('himara/images/rooms/deluxe/deluxe.jpg') }}" class="img-fluid" alt="Image">
-                        </a>
-                        <div class="room-services">
-                            <i class="fa fa-coffee" aria-hidden="true" data-toggle="popover" data-placement="right"
-                                data-trigger="hover" data-content="Breakfast Included"
-                                data-original-title="Breakfast"></i>
-                            <i class="fa fa-bath" data-toggle="popover" data-placement="right" data-trigger="hover"
-                                data-content="2 Bathrooms" data-original-title="Bathroom"></i>
-                            <i class="fa fa-wifi" aria-hidden="true" data-toggle="popover" data-placement="right"
-                                data-trigger="hover" data-content="Free WiFi" data-original-title="WiFi"></i>
-                            <i class="fa fa-television" data-toggle="popover" data-placement="right"
-                                data-trigger="hover" data-content="Plasma TV with cable channels"
-                                data-original-title="TV"></i>
-                        </div>
-                        <div class="room-price">€189 / night</div>
-                    </figure>
-                    <div class="room-info">
-                        <h2 class="room-title">
-                            <a href="room.html">Deluxe Room</a>
-                        </h2>
-                        <p>Enjoy our delux room</p>
-                    </div>
-                </div>
-            </div>
+            @empty
+            @endforelse
+
         </div>
     </div>
 </section>

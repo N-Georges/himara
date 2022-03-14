@@ -11,7 +11,8 @@ class FrontController extends Controller
 {
     public function home()
     {
-        return view('home');
+        $room = Room::all()->random(3); 
+        return view('home', compact('room'));
     }
 
 
@@ -60,7 +61,8 @@ class FrontController extends Controller
 
     public function room_show(Room $id)
     {
-        return view('room-show', compact('id'));
+        $room = Room::all()->random(3); 
+        return view('room-show', compact('id', 'room'));
     }
 
 

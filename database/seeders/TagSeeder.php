@@ -38,33 +38,33 @@ class TagSeeder extends Seeder
             ],
             [
                 "name" => 'Beds: 1 King',
-                "icon" => null,
-                "content" => null
+                "icon" => 'fa fa-bed',
+                "content" => 'Beds: 1 King'
             ],
             [
                 "name" => 'Beds: 2 King and 1 Sofabed',
-                "icon" => null,
-                "content" => null
+                "icon" => 'fa fa-bed',
+                "content" => 'Beds: 2 King and 1 Sofabed'
             ],
             [
                 "name" => 'Max Guests: 2',
-                "icon" => null,
-                "content" => null
+                "icon" => 'fa fa-users',
+                "content" => 'Max Guests: 2'
             ],
             [
                 "name" => 'Max Guests: 4',
-                "icon" => null,
-                "content" => null
+                "icon" => 'fa fa-users',
+                "content" => 'Max Guests: 4'
             ],
             [
                 "name" => 'Beds: 2 King',
-                "icon" => null,
-                "content" => null
+                "icon" => 'fa fa-bed',
+                "content" => 'Beds: 2 King'
             ],
             [
                 "name" => 'Beds: 1 King and 1 Sofabed',
-                "icon" => null,
-                "content" => null
+                "icon" => 'fa fa-bed',
+                "content" => 'Beds: 1 King and 1 Sofabed'
             ],
         ]);
     }
