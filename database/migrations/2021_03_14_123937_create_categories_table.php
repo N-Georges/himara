@@ -13,15 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rooms', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
-            $table->string('city');
-            $table->longText('description');
-            $table->integer('price');
-            // fk
-            $table->unsignedBigInteger("categorie_id");
-            $table->foreign("categorie_id")->references("id")->on("categories");
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -33,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('categories');
     }
 };

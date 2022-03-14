@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
 use App\Models\Room;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class FrontController extends Controller
     {
         $room = Room::all();
         $tags = Tag::all();
-        return view('room-list', compact('room', 'tags'));
+        $categorie = Categorie::all();
+        return view('room-list', compact('room', 'categorie', 'tags'));
     }
 
 
@@ -30,8 +32,19 @@ class FrontController extends Controller
         $room = Room::where('city', 'like', "%$search%")
             ->orWhere('price', 'like', $search)
             ->get();
-        return view("room-list", compact("room", 'tags'));
+            $categorie = Categorie::all();
+        return view("room-list", compact("room", 'categorie', 'tags'));
     }
+
+    public function room_categorie($id)
+    {
+        $room = Room::where("categorie_id", $id)->get();
+        $tags = Tag::all();
+        $categorie = Categorie::all();
+        // dd($projetTout);
+        return view("room-list",compact("categorie", "room", "tags"));
+    }
+
 
 
     public function room_tag($id)
@@ -39,7 +52,8 @@ class FrontController extends Controller
         $tagId = Tag::find($id);
         $room = $tagId->rooms;
         $tags = Tag::all();
-        return view("room-list", compact('room', 'tags'));
+        $categorie = Categorie::all();
+        return view("room-list", compact('room', 'categorie', 'tags'));
     }
 
 

@@ -29,8 +29,9 @@ Route::controller(FrontController::class)
     ->group(function () {
         Route::get('/', 'home')->name('home');
         Route::get('/room-list', 'room_list')->name('rooms');
+        Route::get('/room-list/categorie/{id}', "room_categorie")->name('categorie');
         Route::post('/room-list', 'room_search')->name('room');
-        Route::get('/room-list/tag/{id}', 'room_tag')->name('room');
+        Route::get('/room-list/tag/{id}', 'room_tag')->name('tag');
         Route::get('/room-list/{id}/show', 'room_show')->name('room.show');
         Route::get('/blog', 'blog')->name('blog');
         Route::get('/team', 'team')->name('team');
