@@ -20,8 +20,9 @@ class FrontController extends Controller
     {
         $room = Room::all()->random(3); 
         $comment = Comment::all(); 
+        $gallerie = Gallerie::all(); 
         $blogLast = Blog::latest('created_at')->take(3)->get();
-        return view('home', compact('room', 'blogLast', 'comment'));
+        return view('home', compact('room', 'blogLast', 'comment', 'gallerie'));
     }
 
     ################################# ROOM
