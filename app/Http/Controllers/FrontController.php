@@ -9,7 +9,7 @@ use App\Models\Comment;
 use App\Models\Room;
 use App\Models\Tag;
 use App\Models\TagBlog;
-use App\Models\Tagblog as ModelsTagblog;
+use App\Models\Team;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -132,7 +132,8 @@ class FrontController extends Controller
 
     public function team()
     {
-        return view('team');
+        $team = Team::all();
+        return view('team', compact('team'));
     }
     public function gallery()
     {
