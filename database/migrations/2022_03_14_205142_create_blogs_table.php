@@ -20,6 +20,9 @@ return new class extends Migration
             // fk
             $table->unsignedBigInteger("author_id");
             $table->foreign("author_id")->references("id")->on("authors");
+            // fk
+            $table->unsignedBigInteger("categorie_id");
+            $table->foreign("categorie_id")->references("id")->on("categories_blogs");
             $table->longText('description');
             $table->timestamps();
         });

@@ -28,13 +28,16 @@ use Illuminate\Support\Facades\Route;
 Route::controller(FrontController::class)
     ->group(function () {
         Route::get('/', 'home')->name('home');
+        // ROOM
         Route::get('/room-list', 'room_list')->name('rooms');
         Route::get('/room-list/categorie/{id}', "room_categorie")->name('categorie');
         Route::post('/room-list', 'room_search')->name('room');
         Route::get('/room-list/tag/{id}', 'room_tag')->name('tag');
         Route::get('/room-list/{id}/show', 'room_show')->name('room.show');
+        // BLOG
         Route::get('/blog', 'blog')->name('blog');
         Route::post('/blog', 'blog_search')->name('blog.search');
+        Route::get('/blog/categorie/{id}', "blog_categorie")->name('categorie');
         Route::get('/blog/{id}/show', 'blog_show')->name('blog.show');
         Route::get('/team', 'team')->name('team');
         Route::get('/gallery', 'gallery')->name('gallery');

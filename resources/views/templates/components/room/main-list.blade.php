@@ -116,7 +116,7 @@
                             <ul class="categories">
                                 @foreach ($categorie as $item)
                                 <li>
-                                    <a href={{ route("categorie",$item->id) }}>{{ $item->name }}<span class="posts-num">{{ count($item->rooms) }}</span></a>
+                                    <a href={{ route("categorie",$item->id) }}>{{ $item->name }}<span class="posts-num">{{ count($item->blogs) }}</span></a>
                                 </li>
                                 @endforeach
                             </ul>
