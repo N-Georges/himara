@@ -6,9 +6,11 @@ use App\Models\Blog;
 use App\Models\Categorie;
 use App\Models\Categories_blog;
 use App\Models\Comment;
+use App\Models\Gallerie;
 use App\Models\Room;
 use App\Models\Tag;
 use App\Models\TagBlog;
+use App\Models\TagGallerie;
 use App\Models\Team;
 use Illuminate\Http\Request;
 
@@ -137,7 +139,9 @@ class FrontController extends Controller
     }
     public function gallery()
     {
-        return view('gallery');
+        $gallerie = Gallerie::all();
+        $gallerietag = TagGallerie::all();
+        return view('gallery', compact('gallerie', 'gallerietag'));
     }
     public function contact()
     {
