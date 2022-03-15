@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Categorie;
 use App\Models\Categories_blog;
+use App\Models\Comment;
 use App\Models\Room;
 use App\Models\Tag;
 use App\Models\TagBlog;
@@ -90,7 +91,8 @@ class FrontController extends Controller
     public function blog_show(Blog $id)
     {
         $tags = TagBlog::all()->random(3);
-        return view('blog-show', compact('id', 'tags'));
+        $comments = Comment::all();
+        return view('blog-show', compact('id', 'tags', 'comments'));
     }
 
 

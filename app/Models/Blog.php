@@ -23,4 +23,10 @@ class Blog extends Model
     {
         return $this->belongsToMany(TagBlog::class, 'pivot_blogs_tags');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

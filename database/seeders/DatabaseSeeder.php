@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             BlogSeeder::class,
             TagBlogSeeder::class,
             Blog_tagSeeder::class,
+            CommentSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
     }

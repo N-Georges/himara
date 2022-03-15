@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GalleryController;
@@ -47,7 +48,12 @@ Route::controller(FrontController::class)
         Route::get('/booking-form', 'booking_form')->middleware(['auth'])->name('booking-form');
         Route::get('/dashboard', 'dashboard')->middleware(['auth', 'IsAdmin'])->name('dashboard');
     });
-
+    
+    // COMMENT
+    Route::controller(CommentController::class)
+    ->group(function () {
+        Route::get('/blog/{id}/store', 'store')->name('blog.store');
+    });
     
 // ROUTE GROUP FOR HOMECONTROLLER
 Route::controller(HomeController::class)

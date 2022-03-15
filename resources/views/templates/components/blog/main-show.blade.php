@@ -114,129 +114,47 @@
                     <ul id="comments-list" class="comments-list">
                         <li>
                             <div class="comment-main-level">
+                                @foreach ($comments as $item)
                                 <div class="comment-avatar"><img
                                         src="{{ asset('himara/images/blog/users/user1.jpg') }}" alt=""></div>
                                 <div class="comment-box">
-                                    <div class="comment_content">
-                                        <h4 class="author-name">
-                                            <a href="#">JANE Doe</a>
-                                        </h4>
-                                        <a href="#comment-form" class="reply_link">Reply</a>
-                                        <span class="comment_info">
-                                            <i class="fa fa-clock-o"></i>
-                                            <a href="#">
-                                                <time datetime="2017-10-01T19:56:36+00:00">October 1, 2017 at
-                                                    7:56 pm</time>
-                                            </a>
-                                        </span>
-                                        <div class="comment_said_text">
-                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                                diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                                                aliquam erat volutpat.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <ul class="comments-list reply-list">
-                                <li>
-                                    <div class="comment-avatar"><img
-                                            src="{{ asset('himara/images/blog/users/user2.jpg') }}" alt="">
-                                    </div>
-                                    <div class="comment-box">
                                         <div class="comment_content">
                                             <h4 class="author-name">
-                                                <a href="#">
-                                                    Ina Aldrich</a>
+                                                <a href="#">{{ $item->name }}</a>
                                             </h4>
-                                            <a href="#comment-form" class="reply_link">Edit</a>
                                             <span class="comment_info">
                                                 <i class="fa fa-clock-o"></i>
                                                 <a href="#">
-                                                    <time datetime="2017-10-01T19:56:36+00:00">October 1, 2017
-                                                        at 7:56 pm</time>
+                                                    <time datetime="2017-10-01T19:56:36+00:00">{{$item->created_at->format('F j, Y')}}</time>
                                                 </a>
                                             </span>
                                             <div class="comment_said_text">
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                                    diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                                                    aliquam erat volutpat, euismod tincidunt ut laoreet dolore
-                                                    magna aliquam erat volutpat.</p>
+                                                <p>{{ $item->comment }}</p>
                                             </div>
                                         </div>
                                     </div>
-                                </li>
-                                <li>
-                                    <div class="comment-avatar">
-                                        <img src="{{ asset('himara/images/blog/users/user3.jpg') }}" alt="">
-                                    </div>
-                                    <div class="comment-box">
-                                        <div class="comment_content">
-                                            <h4 class="author-name">
-                                                <a href="#">William Whiten</a>
-                                            </h4>
-                                            <a href="#comment-form" class="reply_link">Reply</a>
-                                            <span class="comment_info">
-                                                <i class="fa fa-clock-o"></i>
-                                                <a href="#">
-                                                    <time datetime="2017-10-01T19:56:36+00:00">October 1, 2017
-                                                        at 7:56 pm</time>
-                                                </a>
-                                            </span>
-                                            <div class="comment_said_text">
-                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                                    diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                                                    aliquam erat volutpat.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div class="comment-main-level">
-                                <div class="comment-avatar">
-                                    <img src="{{ asset('himara/images/blog/users/user4.jpg') }}" alt="">
+                                    @endforeach
                                 </div>
-                                <div class="comment-box">
-                                    <div class="comment_content">
-                                        <h4 class="author-name">
-                                            <a href="#">Amy Ellison</a>
-                                        </h4>
-                                        <a href="#comment-form" class="reply_link">Reply</a>
-                                        <span class="comment_info">
-                                            <i class="fa fa-clock-o"></i>
-                                            <a href="#">
-                                                <time datetime="2017-10-01T19:56:36+00:00">October 1, 2017 at
-                                                    7:56 pm</time>
-                                            </a>
-                                        </span>
-                                        <div class="comment_said_text">
-                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                                diam nonummy nibh euismod tincidunt ut laoreet dolore magna
-                                                aliquam erat volutpat.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </li>
                     </ul>
                     <div class="section-title mt100">
                         <h4>LEAVE YOUR COMMENT</h4>
                         <p class="section-subtitle">Write your comment</p>
                     </div>
-                    <form id="comment-form" class="comment-form">
+                    <form action="{{ route('blog.store', $id->id) }}" method="POST id="comment-form" class="comment-form">
+                        @csrf
                         <div class="row">
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="Name*">
+                                <input name="name" type="text" class="form-control" placeholder="Name*">
                             </div>
                             <div class="col-md-4">
-                                <input type="email" class="form-control" placeholder="Email*">
+                                <input name="email" type="email" class="form-control" placeholder="Email*">
                             </div>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" placeholder="Website">
+                                <input name="website" type="text" class="form-control" placeholder="Website">
                             </div>
                             <div class="col-md-12">
-                                <textarea class="form-control" placeholder="Write Your Comment"></textarea>
+                                <textarea name="comment" class="form-control" placeholder="Write Your Comment"></textarea>
                             </div>
                             <div class="col-md-12">
                                 <button class="btn float-right">
