@@ -7,6 +7,8 @@ use App\Models\Categorie;
 use App\Models\Categories_blog;
 use App\Models\Room;
 use App\Models\Tag;
+use App\Models\TagBlog;
+use App\Models\Tagblog as ModelsTagblog;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -17,7 +19,7 @@ class FrontController extends Controller
         return view('home', compact('room'));
     }
 
-    ########################################################################## ROOM
+    ################################# ROOM
 
     public function room_list()
     {
@@ -73,21 +75,22 @@ class FrontController extends Controller
         return view('templates.components.room.page-title-room', compact('id'));
     }
 
-    ######################################################################## BLOG
+    ################################# BLOG
 
     public function blog()
     {
         $blog = Blog::paginate(3);
+        $tags = Tagblog::all();
         $blogLast = Blog::latest('created_at')->take(4)->get();
         $categorie = Categories_blog::all();
-        return view('blog', compact('blog', 'blogLast', 'categorie'));
+        return view('blog', compact('blog', 'blogLast', 'tags', 'categorie'));
     }
 
 
     public function blog_show(Blog $id)
     {
-        // $blog = Blog::all()->random(3); 
-        return view('blog-show', compact('id'));
+        $tags = TagBlog::all()->random(3);
+        return view('blog-show', compact('id', 'tags'));
     }
 
 
@@ -96,19 +99,32 @@ class FrontController extends Controller
         $categorie = Categories_blog::all();
         $blogLast = Blog::latest('created_at')->take(4)->get();
         $search = '%' . $request->search . '%';
+        $tags = TagBlog::all();
         $blog = Blog::where('title', 'like', "%$search%")->paginate(100);
-        return view("blog", compact("blog", 'blogLast', "categorie"));
+        return view("blog", compact("blog", 'blogLast', "categorie", 'tags'));
     }
 
     
     public function blog_categorie($id)
     {
         $blog = Blog::where("categorie_id", $id)->paginate(100);
-        $blogLast = Blog::latest('created_at')->take(4)->get();;
+        $blogLast = Blog::latest('created_at')->take(4)->get();
         $categorie = Categories_blog::all();
-        return view("blog", compact("categorie", 'blogLast', "blog"));
+        $tags = TagBlog::all();
+        return view("blog", compact("categorie", 'blogLast', "blog", 'tags'));
     }
 
+    public function blog_tag($id)
+    {
+        $tagId = TagBlog::find($id);
+        $blogLast = Blog::latest('created_at')->take(4)->get();
+        $blog = Blog::with('tag_blogs')->whereHas('tag_blogs', function ($tag) use ($tagId) {
+            $tag->whereIn('name', $tagId);
+        })->paginate(100);
+        $tags = TagBlog::all();
+        $categorie = Categories_blog::all();
+        return view("blog", compact('blog', 'categorie', 'tags', 'blogLast'));
+    }
 
     public function team()
     {

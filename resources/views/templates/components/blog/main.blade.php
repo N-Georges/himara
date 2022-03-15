@@ -122,7 +122,7 @@
                               <ul class="categories">
                                   @foreach ($categorie as $item)
                                       <li>
-                                          <a href={{ route('categorie', $item->id) }}>{{ ucfirst($item->name) }}<span
+                                          <a href={{ route('blog.categorie', $item->id) }}>{{ ucfirst($item->name) }}<span
                                                   class="posts-num"></span></a>
                                       </li>
                                   @endforeach
@@ -139,8 +139,8 @@
                                               <div class="col-5">
                                                   <figure class="gradient-overlay-hover link-icon sm">
                                                       <a href="{{ route('blog.show', $item->id) }}">
-                                                          <img src={{ asset('himara/' . $item->image) }} class="img-fluid"
-                                                              alt="Image">
+                                                          <img src={{ asset('himara/' . $item->image) }}
+                                                              class="img-fluid" alt="Image">
                                                       </a>
                                                   </figure>
                                               </div>
@@ -160,22 +160,10 @@
                           <aside class="widget">
                               <h4 class="widget-title">Tags</h4>
                               <div class="tagcloud">
-                                  <a href="#">
-                                      <span class="tag">Party</span></a>
-                                  <a href="#">
-                                      <span class="tag">Travel</span></a>
-                                  <a href="#">
-                                      <span class="tag">Wedding</span></a>
-                                  <a href="#">
-                                      <span class="tag">Food</span></a>
-                                  <a href="#">
-                                      <span class="tag">Music</span></a>
-                                  <a href="#">
-                                      <span class="tag">City</span></a>
-                                  <a href="#">
-                                      <span class="tag">Image</span></a>
-                                  <a href="#">
-                                      <span class="tag">Hotel</span></a>
+                                      @foreach ($tags as $tag)
+                                          <a href={{ route('blog.tag', $tag->id) }}>
+                                              <span class="tag">{{ $tag->name }}</span></a>
+                                      @endforeach
                               </div>
                           </aside>
                       </div>

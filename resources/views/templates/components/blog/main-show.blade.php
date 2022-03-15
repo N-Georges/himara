@@ -29,7 +29,8 @@
                                 <figure>
                                     <div class="gradient-overlay-hover image-icon sm">
                                         <a href="{{ asset('himara/images/blog/post/blog-post2.jpg') }}">
-                                            <img src="{{ asset('himara/images/blog/post/blog-post2.jpg') }}" class="img-fluid">
+                                            <img src="{{ asset('himara/images/blog/post/blog-post2.jpg') }}"
+                                                class="img-fluid">
                                         </a>
                                     </div>
                                     <figcaption>Image Caption</figcaption>
@@ -39,7 +40,8 @@
                                 <figure>
                                     <div class="gradient-overlay-hover image-icon sm">
                                         <a href="{{ asset('himara/images/blog/post/blog-post3.jpg') }}">
-                                            <img src="{{ asset('himara/images/blog/post/blog-post3.jpg') }}" class="img-fluid">
+                                            <img src="{{ asset('himara/images/blog/post/blog-post3.jpg') }}"
+                                                class="img-fluid">
                                         </a>
                                     </div>
                                     <figcaption>Image Caption</figcaption>
@@ -49,7 +51,8 @@
                                 <figure>
                                     <div class="gradient-overlay-hover image-icon sm">
                                         <a href="{{ asset('himara/images/blog/post/blog-post4.jpg') }}">
-                                            <img src="{{ asset('himara/images/blog/post/blog-post4.jpg') }}" class="img-fluid">
+                                            <img src="{{ asset('himara/images/blog/post/blog-post4.jpg') }}"
+                                                class="img-fluid">
                                         </a>
                                     </div>
                                     <figcaption>Image Caption</figcaption>
@@ -59,7 +62,8 @@
                                 <figure>
                                     <div class="gradient-overlay-hover image-icon sm">
                                         <a href="{{ asset('himara/images/blog/post/blog-post5.jpg') }}">
-                                            <img src="{{ asset('himara/images/blog/post/blog-post5.jpg') }}" class="img-fluid">
+                                            <img src="{{ asset('himara/images/blog/post/blog-post5.jpg') }}"
+                                                class="img-fluid">
                                         </a>
                                     </div>
                                     <figcaption>Image Caption</figcaption>
@@ -72,9 +76,9 @@
                                 <span>
                                     <i class="fa fa-tags"></i>
                                     TAGS</span>
-                                <a href="#" rel="tag">Himara</a>
-                                <a href="#" rel="tag">Holiday</a>
-                                <a href="#" rel="tag">Summer</a>
+                                @foreach ($tags as $item)
+                                    <a href="#" rel="tag">{{ $item->name }}</a>
+                                @endforeach
                             </div>
                             <div class="share">
                                 <span>
@@ -110,7 +114,8 @@
                     <ul id="comments-list" class="comments-list">
                         <li>
                             <div class="comment-main-level">
-                                <div class="comment-avatar"><img src="{{ asset('himara/images/blog/users/user1.jpg') }}" alt=""></div>
+                                <div class="comment-avatar"><img
+                                        src="{{ asset('himara/images/blog/users/user1.jpg') }}" alt=""></div>
                                 <div class="comment-box">
                                     <div class="comment_content">
                                         <h4 class="author-name">
@@ -134,7 +139,8 @@
                             </div>
                             <ul class="comments-list reply-list">
                                 <li>
-                                    <div class="comment-avatar"><img src="{{ asset('himara/images/blog/users/user2.jpg') }}" alt="">
+                                    <div class="comment-avatar"><img
+                                            src="{{ asset('himara/images/blog/users/user2.jpg') }}" alt="">
                                     </div>
                                     <div class="comment-box">
                                         <div class="comment_content">

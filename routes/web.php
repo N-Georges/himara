@@ -37,8 +37,10 @@ Route::controller(FrontController::class)
         // BLOG
         Route::get('/blog', 'blog')->name('blog');
         Route::post('/blog', 'blog_search')->name('blog.search');
-        Route::get('/blog/categorie/{id}', "blog_categorie")->name('categorie');
+        Route::get('/blog/categorie/{id}', "blog_categorie")->name('blog.categorie');
         Route::get('/blog/{id}/show', 'blog_show')->name('blog.show');
+        Route::get('/blog/tag/{id}', 'blog_tag')->name('blog.tag');
+
         Route::get('/team', 'team')->name('team');
         Route::get('/gallery', 'gallery')->name('gallery');
         Route::get('/contact', 'contact')->name('contact');

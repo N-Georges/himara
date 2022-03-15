@@ -18,4 +18,9 @@ class Blog extends Model
     {
         return $this->belongsTo(Categories_blog::class);
     }
+
+    public function tag_blogs()
+    {
+        return $this->belongsToMany(TagBlog::class, 'pivot_blogs_tags');
+    }
 }
