@@ -33,6 +33,6 @@ class DatabaseSeeder extends Seeder
             GallerieSeeder::class,
             ServiceSeeder::class,
         ]);
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(20)->create();
     }
 }

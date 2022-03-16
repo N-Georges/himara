@@ -73,35 +73,7 @@
             </div>
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <div x-data="{ notificationOpen: false }" class="relative">
-                    <button @click="notificationOpen = ! notificationOpen"
-                        class="flex mx-4 text-gray-600 focus:outline-none">
-                        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M15 17H20L18.5951 15.5951C18.2141 15.2141 18 14.6973 18 14.1585V11C18 8.38757 16.3304 6.16509 14 5.34142V5C14 3.89543 13.1046 3 12 3C10.8954 3 10 3.89543 10 5V5.34142C7.66962 6.16509 6 8.38757 6 11V14.1585C6 14.6973 5.78595 15.2141 5.40493 15.5951L4 17H9M15 17V18C15 19.6569 13.6569 21 12 21C10.3431 21 9 19.6569 9 18V17M15 17H9"
-                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            </path>
-                        </svg>
-                    </button>
-    
-                    <div x-show="notificationOpen" @click="notificationOpen = false"
-                        class="fixed inset-0 h-full w-full z-10" style="display: none;"></div>
-    
-                    <div x-show="notificationOpen"
-                        class="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl overflow-hidden z-10"
-                        style="width: 20rem; display: none;">
-                       
-                        <a href="#"
-                            class="flex items-center px-4 py-3 text-gray-600 hover:text-white hover:bg-indigo-600 -mx-2">
-                            <img class="h-8 w-8 rounded-full object-cover mx-1"
-                                src="himara/images/users/user.jpg"
-                                alt="avatar">
-                            <p class="text-sm mx-2">
-                                <span class="font-bold" href="#">Slick Net</span> send message . 45m
-                            </p>
-                        </a>
-                    </div>
-                </div>
+            @include('components.mailbox')
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
@@ -167,54 +139,52 @@
                 {{ __('User Manage') }}
             </x-responsive-nav-link>
             <div x-data="{dropdownMenu: false}"
-                        class="relative  pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out z-50">
-                        <!-- Dropdown toggle button -->
-                        <button @click="dropdownMenu = ! dropdownMenu"
-                            class="flex text-gray-500 items-center p-2 rounded-md">
-                            <span class="mr-4">Page Manage</span>
-                            <div class="">
-                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </div>
-                        </button>
-                        <!-- Dropdown list -->
-                        <div x-transition:enter="transition ease-out duration-200"
-                            x-transition:enter-start="transform opacity-0 scale-95"
-                            x-transition:enter-end="transform opacity-100 scale-100"
-                            x-transition:leave="transition ease-in duration-75"
-                            x-transition:leave-start="transform opacity-100 scale-100"
-                            x-transition:leave-end="transform opacity-0 scale-95" x-show="dropdownMenu"
-                            class="absolute left-3 top-9 py-2 mt-4 bg-white rounded-md shadow-xl w-48 ring-1 ring-black ring-opacity-5">
-                            <a href="{{ route('home.index') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
-                                Home
-                            </a>
-                            <a href="{{ route('room.index') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
-                                Rooms
-                            </a>
-                            <a href="{{ route('blog.index') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
-                                Blog
-                            </a>
-                            <a href="{{ route('team.index') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
-                                Team
-                            </a>
-                            <a href="{{ route('gallery.index') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
-                                Gallery
-                            </a>
-                            <a href="{{ route('contact.index') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
-                                Contact
-                            </a>
-                        </div>
+                class="relative  pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out z-50">
+                <!-- Dropdown toggle button -->
+                <button @click="dropdownMenu = ! dropdownMenu" class="flex text-gray-500 items-center p-2 rounded-md">
+                    <span class="mr-4">Page Manage</span>
+                    <div class="">
+                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
                     </div>
+                </button>
+                <!-- Dropdown list -->
+                <div x-transition:enter="transition ease-out duration-200"
+                    x-transition:enter-start="transform opacity-0 scale-95"
+                    x-transition:enter-end="transform opacity-100 scale-100"
+                    x-transition:leave="transition ease-in duration-75"
+                    x-transition:leave-start="transform opacity-100 scale-100"
+                    x-transition:leave-end="transform opacity-0 scale-95" x-show="dropdownMenu"
+                    class="absolute left-3 top-9 py-2 mt-4 bg-white rounded-md shadow-xl w-48 ring-1 ring-black ring-opacity-5">
+                    <a href="{{ route('home.index') }}"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
+                        Home
+                    </a>
+                    <a href="{{ route('room.index') }}"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
+                        Rooms
+                    </a>
+                    <a href="{{ route('blog.index') }}"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
+                        Blog
+                    </a>
+                    <a href="{{ route('team.index') }}"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
+                        Team
+                    </a>
+                    <a href="{{ route('gallery.index') }}"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
+                        Gallery
+                    </a>
+                    <a href="{{ route('contact.index') }}"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
+                        Contact
+                    </a>
+                </div>
+            </div>
         </div>
 
         <!-- Responsive Settings Options -->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactMail;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -18,10 +19,11 @@ class ContactController extends Controller
         return view('admin.contact.main');
     }
 
-    // public function contact()
-    // {
-    //     return view('contact');
-    // }
+    public function mailbox()
+    {
+        $mails = Contact::all();
+        return view('layouts.back')->with(compact('mails'));;
+    }
 
     // public function sendEmail(Request $request)
     // {
@@ -36,6 +38,8 @@ class ContactController extends Controller
 
     //     return back()->with('message sent','Your message as been sent successfuly');
     // }
+
+
 
     /**
      * Show the form for creating a new resource.

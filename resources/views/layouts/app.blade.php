@@ -32,8 +32,8 @@
             </header>
     
             <!-- Page Content -->
-            <main class="px-6 flex flex-col">
-                <div class="mt-4">
+            <main class="px-6 py-4 flex flex-col">
+                <div class="">
                     @include('layouts.flash')
                 </div>
                 @yield('content')
@@ -64,5 +64,6 @@
                 }
             }
         </script>
+        
     </body>
 </html>

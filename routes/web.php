@@ -99,6 +99,12 @@ Route::controller(ProfileController::class)
 Route::controller(UserController::class)
     ->group(function () {
         Route::get('/dashboard/user', 'index')->middleware(['auth', 'IsAdmin'])->name('user.index');
+        Route::post('/dashboard/user', 'user_search')->middleware(['auth', 'IsAdmin'])->name('user.search');
+        Route::get('/dashboard/user/{id}/edit', 'edit')->middleware(['auth', 'IsAdmin'])->name('user.edit');
+        Route::put('/dashboard/user/{id}/update', 'update')->middleware(['auth', 'IsAdmin'])->name('user.update');
+        Route::get('/dashboard/user/create', 'create')->middleware(['auth', 'IsAdmin'])->name('user.create');
+        Route::post('/dashboard/user/store', 'store')->middleware(['auth', 'IsAdmin'])->name('user.store');
+        Route::delete('/dashboard/user/{id}/delete',  'destroy')->middleware(['auth', 'IsAdmin'])->name('user.destroy');
     });
 
 // CONTACT CONTROLLER

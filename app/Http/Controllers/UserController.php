@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -13,7 +16,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.user.main');
+        $user = User::paginate(10);
+        return view('admin.user.main', compact('user'));
+    }
+
+    public function user_search(Request $request)
+    {
+
+        $search = '%' . $request->search . '%';
+        $user = User::where('name', 'like', "%$search%")
+            ->orWhere('email', 'like', $search)
+            ->paginate(100);
+        return view("admin.user.main", compact('user'));
     }
 
     /**
@@ -23,7 +37,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $role = Role::all();
+        return view('admin.user.create' , compact('role'));
     }
 
     /**
@@ -34,7 +49,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user -> name = $request->name;
+        $user -> email = $request->email;
+        $user -> role_id = $request->role_id;
+        $user -> password = Hash::make('password');
+        $user -> save();
+
+        return redirect()->route('user.index')->with('success', 'user create');
     }
 
     /**
@@ -51,34 +73,51 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $id)
     {
-        //
+        $user = $id;
+        $role = Role::all();
+        return view('admin.user.edit', compact('user', 'role'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $id)
     {
-        //
+
+        $request->validate(
+            [
+                'name' => 'required|max:50',
+                'email' => 'required|regex:/(.+)@(.+)\.(.+)/i',
+            ],
+            [
+                'email.regex' => 'email format not correct, please use this format "user@example.com" ',
+            ]
+
+        );
+        $this->authorize('isAdmin', $id);
+        $user = $id;
+        $user->update($request->all());
+
+        return redirect()->route('user.index')->with('success', 'user update');
+        return redirect('user.index' . $user->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $id)
     {
-        //
+        $this->authorize('isAdmin', $id);
+        $id->delete();
+        return Redirect()->route('user.index')->with('warning', 'user delete');
     }
 }
