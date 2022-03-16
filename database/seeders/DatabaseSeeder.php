@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             TeamSeeder::class,
             TagGallerieSeeder::class,
             GallerieSeeder::class,
+            ServiceSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
     }

@@ -8,6 +8,7 @@ use App\Models\Categories_blog;
 use App\Models\Comment;
 use App\Models\Gallerie;
 use App\Models\Room;
+use App\Models\Service;
 use App\Models\Tag;
 use App\Models\TagBlog;
 use App\Models\TagGallerie;
@@ -22,7 +23,8 @@ class FrontController extends Controller
         $comment = Comment::all(); 
         $gallerie = Gallerie::all(); 
         $blogLast = Blog::latest('created_at')->take(3)->get();
-        return view('home', compact('room', 'blogLast', 'comment', 'gallerie'));
+        $service = Service::all();
+        return view('home', compact('room', 'blogLast', 'comment', 'gallerie', 'service'));
     }
 
     ################################# ROOM
@@ -138,6 +140,7 @@ class FrontController extends Controller
         $team = Team::all();
         return view('team', compact('team'));
     }
+    
     public function gallery()
     {
         $gallerie = Gallerie::all();
