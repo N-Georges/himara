@@ -36,7 +36,8 @@
                         <h4>CONTACT US</h4>
                         <p class="section-subtitle">Say hello</p>
                     </div>
-                    <form id="contact-form" name="contact-form">
+                    <form  method="POST" action="{{ route('contact.send') }}" class="contact-form" >
+                        @csrf
                         <div class="form-group">
                             <input class="form-control" name="name" placeholder="Your Name" type="text">
                         </div>
@@ -44,7 +45,7 @@
                             <input class="form-control" name="email" type="email" placeholder="Your Email Address">
                         </div>
                         <div class="form-group">
-                            <textarea class="form-control" name="message" placeholder="Your Message"></textarea>
+                            <textarea class="form-control" name="msg" placeholder="Your Message"></textarea>
                         </div>
                         <button class="btn" type="submit">
                             <i class="fa fa-location-arrow"></i>Send Message</button>

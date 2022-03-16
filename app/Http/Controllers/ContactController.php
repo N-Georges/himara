@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -15,6 +17,25 @@ class ContactController extends Controller
     {
         return view('admin.contact.main');
     }
+
+    // public function contact()
+    // {
+    //     return view('contact');
+    // }
+
+    // public function sendEmail(Request $request)
+    // {
+    //     $details = [
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'phone' => $request->phone,
+    //         'msg' => $request->msg,
+    //     ];
+
+    //     Mail::to('ngeorges.dev@gmail.com')->send(new ContactMail($details));
+
+    //     return back()->with('message sent','Your message as been sent successfuly');
+    // }
 
     /**
      * Show the form for creating a new resource.

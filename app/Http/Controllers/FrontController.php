@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use App\Models\Blog;
 use App\Models\Categorie;
 use App\Models\Categories_blog;
 use App\Models\Comment;
+use App\Models\Contact;
 use App\Models\Gallerie;
 use App\Models\Room;
 use App\Models\Service;
@@ -14,6 +16,7 @@ use App\Models\TagBlog;
 use App\Models\TagGallerie;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class FrontController extends Controller
 {
@@ -151,6 +154,22 @@ class FrontController extends Controller
     {
         return view('contact');
     }
+    public function sendEmail(Request $request)
+    {
+        $mail = new Contact();
+
+        $mail->name = $request->name;
+        $mail->email = $request->email;
+        $mail->phone = $request->phone;
+        $mail->subject = $request->subject;
+        $mail->msg = $request->msg;
+		$mail->save();
+
+        Mail::to('ngeorges.dev@gmail.com')->send(new ContactMail($mail));
+
+        return back()->with('message sent','Your message as been sent successfuly');
+    }
+
     public function booking_form()
     {
         return view('booking-form');

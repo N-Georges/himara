@@ -45,6 +45,7 @@ Route::controller(FrontController::class)
         Route::get('/team', 'team')->name('team');
         Route::get('/gallery', 'gallery')->name('gallery');
         Route::get('/contact', 'contact')->name('contact');
+        Route::post('/send-message', 'sendEmail')->name('contact.send');
         Route::get('/booking-form', 'booking_form')->middleware(['auth'])->name('booking-form');
         Route::get('/dashboard', 'dashboard')->middleware(['auth', 'IsAdmin'])->name('dashboard');
     });
@@ -100,5 +101,8 @@ Route::controller(UserController::class)
         Route::get('/dashboard/user', 'index')->middleware(['auth', 'IsAdmin'])->name('user.index');
     });
 
+// CONTACT CONTROLLER
+// Route::get('/contact', [ContactController::class, 'contact'] );
+// Route::post('/send-message', [ContactController::class, 'sendEmail'] )->name('contact.send');
 
 require __DIR__ . '/auth.php';
