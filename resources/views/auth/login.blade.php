@@ -7,10 +7,11 @@
         </x-slot>
 
         <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+        {{-- <x-auth-session-status class="mb-4" :status="session('status')" />
 
         <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <x-auth-validation-errors class="mb-4" :errors="$errors" /> --}}
+        @include('layouts.flash')
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -21,6 +22,9 @@
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required
                     autofocus />
+                @if ($errors->any('email'))
+                    <span class="text-red-700">{{ $errors->first('email') }}</span>
+                @endif
             </div>
 
             <!-- Password -->
@@ -29,9 +33,9 @@
 
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required
                     autocomplete="current-password" />
-                    @if ($errors->any('password'))
-                                    <span class="text-red-700">{{ $errors->first('password') }}</span>
-                                @endif
+                @if ($errors->any('password'))
+                    <span class="text-red-700">{{ $errors->first('password') }}</span>
+                @endif
             </div>
 
             <!-- Remember Me -->

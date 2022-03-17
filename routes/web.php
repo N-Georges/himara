@@ -49,38 +49,50 @@ Route::controller(FrontController::class)
         Route::get('/booking-form', 'booking_form')->middleware(['auth'])->name('booking-form');
         Route::get('/dashboard', 'dashboard')->middleware(['auth', 'IsAdmin'])->name('dashboard');
     });
-    
-    // COMMENT
-    Route::controller(CommentController::class)
+
+// COMMENT
+Route::controller(CommentController::class)
     ->group(function () {
         Route::get('/blog/{id}/store', 'store')->name('blog.store');
     });
-    
+
 // ROUTE GROUP FOR HOMECONTROLLER
 Route::controller(HomeController::class)
     ->group(function () {
         Route::get('/dashboard/home', 'index')->middleware(['auth', 'IsAdmin'])->name('home.index');
     });
+
 // ROUTE GROUP FOR ROOMCONTROLLER
 Route::controller(RoomController::class)
     ->group(function () {
         Route::get('/dashboard/room', 'index')->middleware(['auth', 'IsAdmin'])->name('room.index');
+        Route::post('/dashboard/room', 'room_search')->middleware(['auth', 'IsAdmin'])->name('room.search');
+        Route::get('/dashboard/room/{id}/edit', 'edit')->middleware(['auth', 'IsAdmin'])->name('room.edit');
+        Route::put('/dashboard/room/{id}/update', 'update')->middleware(['auth', 'IsAdmin'])->name('room.update');
+        Route::get('/dashboard/room/create', 'create')->middleware(['auth', 'IsAdmin'])->name('room.create');
+        Route::post('/dashboard/room/store', 'store')->middleware(['auth', 'IsAdmin'])->name('room.store');
+        Route::delete('/dashboard/room/{id}/delete',  'destroy')->middleware(['auth', 'IsAdmin'])->name('room.destroy');
+
     });
+
 // ROUTE GROUP FOR BLOGCONTROLLER
 Route::controller(BlogController::class)
     ->group(function () {
         Route::get('/dashboard/blog', 'index')->middleware(['auth', 'IsAdmin'])->name('blog.index');
     });
+
 // ROUTE GROUP FOR TEAMCONTROLLER
 Route::controller(TeamController::class)
     ->group(function () {
         Route::get('/dashboard/team', 'index')->middleware(['auth', 'IsAdmin'])->name('team.index');
     });
+
 // ROUTE GROUP FOR GALLERYCONTROLLER
 Route::controller(GalleryController::class)
     ->group(function () {
         Route::get('/dashboard/gallery', 'index')->middleware(['auth', 'IsAdmin'])->name('gallery.index');
     });
+    
 // ROUTE GROUP FOR CONTACTCONTROLLER
 Route::controller(ContactController::class)
     ->group(function () {
@@ -106,9 +118,5 @@ Route::controller(UserController::class)
         Route::post('/dashboard/user/store', 'store')->middleware(['auth', 'IsAdmin'])->name('user.store');
         Route::delete('/dashboard/user/{id}/delete',  'destroy')->middleware(['auth', 'IsAdmin'])->name('user.destroy');
     });
-
-// CONTACT CONTROLLER
-// Route::get('/contact', [ContactController::class, 'contact'] );
-// Route::post('/send-message', [ContactController::class, 'sendEmail'] )->name('contact.send');
 
 require __DIR__ . '/auth.php';

@@ -56,7 +56,7 @@ class UserController extends Controller
         $user -> password = Hash::make('password');
         $user -> save();
 
-        return redirect()->route('user.index')->with('success', 'user create');
+        return redirect()->route('user.index')->with('success', 'user create successfuly');
     }
 
     /**
@@ -105,8 +105,7 @@ class UserController extends Controller
         $user = $id;
         $user->update($request->all());
 
-        return redirect()->route('user.index')->with('success', 'user update');
-        return redirect('user.index' . $user->id);
+        return redirect()->route('user.index')->with('success', 'user update successfuly');
     }
 
     /**

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorie;
+use App\Models\Room;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -13,9 +15,20 @@ class RoomController extends Controller
      */
     public function index()
     {
-        return view('admin.room.main');
+        $room = Room::paginate(5);
+        return view('admin.room.main', compact('room'));
     }
 
+
+    public function room_search(Request $request)
+    {
+
+        $search = '%' . $request->search . '%';
+        $room = Room::where('city', 'like', "%$search%")
+            ->orWhere('price', 'like', $search)
+            ->paginate(100);
+        return view("admin.room.main", compact('room'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -23,7 +36,8 @@ class RoomController extends Controller
      */
     public function create()
     {
-        //
+        $categorie = Categorie::all();
+        return view('admin.room.create' , compact('categorie'));
     }
 
     /**
@@ -34,13 +48,20 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new Room();
+        $user -> image = $request['image'] = 'images\rooms\deluxe\deluxe.jpg';
+        $user -> city = $request->city;
+        $user -> description = $request->description;
+        $user -> price = $request->price;
+        $user -> categorie_id = $request->categorie_id;
+        $user -> save();
+
+        return redirect()->route('room.index')->with('success', 'room create successfuly');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -51,34 +72,47 @@ class RoomController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Room $id)
     {
-        //
+        $room = $id;
+        $categorie = Categorie::all();
+        return view('admin.room.edit', compact('room', 'categorie'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Room $id)
     {
-        //
+
+        $request->validate(
+            [
+                'city' => 'required|max:50',
+                'price' => 'required|numeric',
+            ],
+
+        );
+        $this->authorize('isAdmin', $id);
+        $room = $id;
+        $room->update($request->all());
+
+        return redirect()->route('room.index')->with('success', 'room update successfuly');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Room $id)
     {
-        //
+        $this->authorize('isAdmin', $id);
+        $id->delete();
+        return Redirect()->route('room.index')->with('warning', 'room delete');
     }
 }

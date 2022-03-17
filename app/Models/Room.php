@@ -8,6 +8,13 @@ class Room extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'city',
+        'description',
+        'price',
+        'categorie_id',
+    ];
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class);

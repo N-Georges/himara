@@ -15,8 +15,7 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js">
-        </script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
         <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.9.1/cdn.js"></script>
     </head>
@@ -64,6 +63,6 @@
                 }
             }
         </script>
-        
+        <script src="./node_modules/tw-elements/dist/js/index.min.js"></script>
     </body>
 </html>
