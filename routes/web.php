@@ -79,6 +79,12 @@ Route::controller(RoomController::class)
 Route::controller(BlogController::class)
     ->group(function () {
         Route::get('/dashboard/blog', 'index')->middleware(['auth', 'IsAdmin'])->name('blog.index');
+        Route::post('/dashboard/blog', 'blog_search')->middleware(['auth', 'IsAdmin'])->name('blog.search');
+        Route::get('/dashboard/blog/{id}/edit', 'edit')->middleware(['auth', 'IsAdmin'])->name('blog.edit');
+        Route::put('/dashboard/blog/{id}/update', 'update')->middleware(['auth', 'IsAdmin'])->name('blog.update');
+        Route::get('/dashboard/blog/create', 'create')->middleware(['auth', 'IsAdmin'])->name('blog.create');
+        Route::post('/dashboard/blog/store', 'store')->middleware(['auth', 'IsAdmin'])->name('blog.store');
+        Route::delete('/dashboard/blog/{id}/delete',  'destroy')->middleware(['auth', 'IsAdmin'])->name('blog.destroy');
     });
 
 // ROUTE GROUP FOR TEAMCONTROLLER

@@ -48,13 +48,13 @@ class RoomController extends Controller
      */
     public function store(Request $request)
     {
-        $user = new Room();
-        $user -> image = $request['image'] = 'images\rooms\deluxe\deluxe.jpg';
-        $user -> city = $request->city;
-        $user -> description = $request->description;
-        $user -> price = $request->price;
-        $user -> categorie_id = $request->categorie_id;
-        $user -> save();
+        $room = new Room();
+        $room -> image = $request['image'] = 'images\rooms\deluxe\deluxe.jpg';
+        $room -> city = $request->city;
+        $room -> description = $request->description;
+        $room -> price = $request->price;
+        $room -> categorie_id = $request->categorie_id;
+        $room -> save();
 
         return redirect()->route('room.index')->with('success', 'room create successfuly');
     }

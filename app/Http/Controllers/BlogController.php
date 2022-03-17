@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
+use App\Models\Blog;
+use App\Models\Categories_blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -13,7 +16,17 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('admin.blog.main');
+        $blog = Blog::paginate(5);
+        return view('admin.blog.main', compact('blog'));
+    }
+
+    public function blog_search(Request $request)
+    {
+
+        $search = '%' . $request->search . '%';
+        $blog = Blog::where('title', 'like', "%$search%")
+            ->paginate(100);
+        return view("admin.blog.main", compact('blog'));
     }
 
     /**
@@ -23,7 +36,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        $categorie = Categories_blog::all();
+        $author = Author::all();
+        return view('admin.blog.create' , compact('categorie', 'author'));
     }
 
     /**
@@ -34,7 +49,15 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $blog = new Blog();
+        $blog -> image = $request['image'] = 'images\blog\blog-post1.jpg';
+        $blog -> title = $request->title;
+        $blog -> author_id = $request->author_id;
+        $blog -> categorie_id = $request->categorie_id;
+        $blog -> description = $request->description;
+        $blog -> save();
+
+        return redirect()->route('blog.index')->with('success', 'blog create successfuly');
     }
 
     /**
@@ -51,34 +74,41 @@ class BlogController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Blog $id)
     {
-        //
+        $blog = $id;
+        $categorie = Categories_blog::all();
+        $author = Author::all();
+        return view('admin.blog.edit', compact('blog', 'categorie', 'author'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Blog $id)
     {
-        //
+        $this->authorize('isAdmin', $id);
+        $blog = $id;
+        $blog->update($request->all());
+
+        return redirect()->route('blog.index')->with('success', 'blog update successfuly');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Blog $id)
     {
-        //
+        $this->authorize('isAdmin', $id);
+        $id->comments()->delete();
+        $id->delete();
+        return Redirect()->route('blog.index')->with('warning', 'blog delete');
     }
 }
