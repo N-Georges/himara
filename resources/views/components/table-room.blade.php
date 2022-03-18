@@ -70,7 +70,7 @@
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <div class="flex-shrink-0 w-10 h-10">
                                             <img class="w-full h-full rounded-full"
-                                                src={{ asset('himara/' . $item->image) }} alt="" />
+                                                src={{ asset('himara/images/' . $item->image) }} alt="" />
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">

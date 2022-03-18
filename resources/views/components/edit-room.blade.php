@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="mt-5 md:mt-0 md:col-span-2 ">
-                <form method="POST" action="{{ route('room.update', $room->id) }}">
+                <form method="POST" action="{{ route('room.update', $room->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="shadow overflow-hidden sm:rounded-md">

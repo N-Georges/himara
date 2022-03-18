@@ -37,7 +37,7 @@ class RoomController extends Controller
     public function create()
     {
         $categorie = Categorie::all();
-        return view('admin.room.create' , compact('categorie'));
+        return view('admin.room.create', compact('categorie'));
     }
 
     /**
@@ -49,12 +49,19 @@ class RoomController extends Controller
     public function store(Request $request)
     {
         $room = new Room();
-        $room -> image = $request['image'] = 'images\rooms\deluxe\deluxe.jpg';
-        $room -> city = $request->city;
-        $room -> description = $request->description;
-        $room -> price = $request->price;
-        $room -> categorie_id = $request->categorie_id;
-        $room -> save();
+        //STORAGE
+        $path = 'himara/images/';
+        $file = $request->file('image');
+        $newImage = date('Ymd') . uniqid() . '.jpg';
+        $file->move(public_path($path), $newImage);
+
+        // DB
+        $room->image = $newImage;
+        $room->city = $request->city;
+        $room->description = $request->description;
+        $room->price = $request->price;
+        $room->categorie_id = $request->categorie_id;
+        $room->save();
 
         return redirect()->route('room.index')->with('success', 'room create successfuly');
     }
@@ -99,8 +106,21 @@ class RoomController extends Controller
         );
         $this->authorize('isAdmin', $id);
         $room = $id;
-        $room->update($request->all());
 
+        //STORAGE
+        $path = 'himara/images/';
+        $file = $request->file('image');
+        $newImage = date('Ymd') . uniqid() . '.jpg';
+        $file->move(public_path($path), $newImage);
+
+        // DB
+        $room->image = $newImage;
+        $room->city = $request->city;
+        $room->description = $request->description;
+        $room->price = $request->price;
+        $room->categorie_id = $request->categorie_id;
+
+        $room->save();
         return redirect()->route('room.index')->with('success', 'room update successfuly');
     }
 
