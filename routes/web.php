@@ -53,7 +53,7 @@ Route::controller(FrontController::class)
 // COMMENT
 Route::controller(CommentController::class)
     ->group(function () {
-        Route::get('/blog/{id}/store', 'store')->name('blog.store');
+        Route::get('/blog/{id}/store', 'store')->name('blog.comment');
     });
 
 // ROUTE GROUP FOR HOMECONTROLLER

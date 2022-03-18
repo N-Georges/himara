@@ -141,7 +141,7 @@
                         <h4>LEAVE YOUR COMMENT</h4>
                         <p class="section-subtitle">Write your comment</p>
                     </div>
-                    <form action="{{ route('blog.store', $id->id) }}" method="POST id="comment-form" class="comment-form">
+                    <form action="{{ route('blog.comment', $id->id) }}" method="POST id="comment-form" class="comment-form">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
