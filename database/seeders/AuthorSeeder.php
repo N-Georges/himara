@@ -17,17 +17,17 @@ class AuthorSeeder extends Seeder
     {
         DB::table('authors')->insert([
             [
-                "image" => "images/users/user1.jpg", 
+                "image" => "users/user1.jpg", 
                 "name" => "jane doe", 
                 "created_at" => now()
             ],
             [
-                "image" => "images/users/user2.jpg", 
+                "image" => "users/user2.jpg", 
                 "name" => "victor hugo", 
                 "created_at" => now()
             ],
             [
-                "image" => "images/users/user3.jpg", 
+                "image" => "users/user3.jpg", 
                 "name" => "voltaire", 
                 "created_at" => now()
             ],

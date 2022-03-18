@@ -12,7 +12,7 @@
                         <div class="news-grid-item">
                             <figure class="gradient-overlay-hover link-icon">
                                 <a href="{{ route('blog.show', $item->id) }}">
-                                    <img src={{ asset('himara/' . $item->image) }} class="img-fluid"
+                                    <img src={{ asset('himara/images/' . $item->image) }} class="img-fluid"
                                         alt="Image">
                                 </a>
                             </figure>
@@ -23,7 +23,7 @@
                                 <p>{{ Str::of($item->description)->words(30) }}</p>
                                 <div class="post-meta">
                                     <span class="author">
-                                        <a href="#"><img src={{ asset('himara/' . $item->author->image) }} width="16"
+                                        <a href="#"><img src={{ asset('himara/images/' . $item->author->image) }} width="16"
                                                 alt="Image">
                                             {{ $item->author->name }}</a>
                                     </span>

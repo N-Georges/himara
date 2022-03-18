@@ -13,7 +13,7 @@
                                           <div class="post-thumbnail">
                                               <figure class="gradient-overlay-hover link-icon">
                                                   <a href="{{ route('blog.show', $item->id) }}">
-                                                      <img src={{ asset('himara/' . $item->image) }}
+                                                      <img src={{ asset('himara/images/' . $item->image) }}
                                                           class="img-fluid" alt="Image">
                                                   </a>
                                               </figure>
@@ -28,7 +28,7 @@
                                               <div class="post-meta">
                                                   <span class="author">
                                                       <a href="#"><img
-                                                              src={{ asset('himara/' . $item->author->image) }}
+                                                              src={{ asset('himara/images/' . $item->author->image) }}
                                                               width="16" alt="Image">{{ $item->author->name }}</a>
                                                   </span>
                                                   <span class="date">
@@ -107,7 +107,7 @@
                       <div class="sidebar">
                           <aside class="widget noborder">
                               <div class="search">
-                                  <form class="widget-search" action="{{ route('blog.search') }}" method="POST">
+                                  <form class="widget-search" action="{{ route('blog') }}" method="POST">
                                       @csrf
                                       <input type="search" placeholder="Search" name="search">
                                       <button class="btn-search" id="searchsubmit" type="submit">
@@ -139,7 +139,7 @@
                                               <div class="col-5">
                                                   <figure class="gradient-overlay-hover link-icon sm">
                                                       <a href="{{ route('blog.show', $item->id) }}">
-                                                          <img src={{ asset('himara/' . $item->image) }}
+                                                          <img src={{ asset('himara/images/' . $item->image) }}
                                                               class="img-fluid" alt="Image">
                                                       </a>
                                                   </figure>

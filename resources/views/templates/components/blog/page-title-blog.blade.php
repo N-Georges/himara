@@ -6,7 +6,7 @@
     <div class="container inner">
         <h2 class="blog-post-title">{{ $id->title }}</h2>
         <div class="blog-post-info">
-            <img alt="" src={{ asset('himara/' . $id->author->image) }} class="author-avatar" width="16">
+            <img alt="" src={{ asset('himara/images/' . $id->author->image) }} class="author-avatar" width="16">
             <p>by
                 <span>
                     <a href="#">{{ $id->author->name }}</a></span>
