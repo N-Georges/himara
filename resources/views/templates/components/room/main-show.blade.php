@@ -9,8 +9,8 @@
                         <!-- ITEM -->
                         <div class="item">
                             <figure class="gradient-overlay-hover image-icon">
-                                <a href="{{ asset('himara/'.$id->image) }}">
-                                    <img class="img-fluid" src={{ asset('himara/'.$id->image) }} alt="Image">
+                                <a href="{{ asset('himara/images/'.$id->image) }}">
+                                    <img class="img-fluid" src={{ asset('himara/images/'.$id->image) }} alt="Image">
                                 </a>
                             </figure>
                         </div>
@@ -25,7 +25,7 @@
                         <!-- ITEM -->
                         <div class="item">
                             <figure class="gradient-overlay-hover image-icon">
-                                <a href="{{ asset('himara/'.$id->image) }}">
+                                <a href="{{ asset('himara/images/'.$id->image) }}">
                                     <img class="img-fluid" src={{ asset('himara/'.$id->image) }} alt="Image">
                                 </a>
                             </figure>
@@ -41,7 +41,7 @@
                         <!-- ITEM -->
                         <div class="item">
                             <figure class="gradient-overlay-hover image-icon">
-                                <a href="{{ asset('himara/'.$id->image) }}">
+                                <a href="{{ asset('himara/images/'.$id->image) }}">
                                     <img class="img-fluid" src={{ asset('himara/'.$id->image) }} alt="Image">
                                 </a>
                             </figure>
@@ -57,7 +57,7 @@
                         <!-- ITEM -->
                         <div class="item">
                             <figure class="gradient-overlay-hover image-icon">
-                                <a href="{{ asset('himara/'.$id->image) }}">
+                                <a href="{{ asset('himara/images/'.$id->image) }}">
                                     <img class="img-fluid" src={{ asset('himara/'.$id->image) }} alt="Image">
                                 </a>
                             </figure>
@@ -73,25 +73,25 @@
                     </div>
                     <div id="room-thumbs" class="room-thumbs owl-carousel">
                         <!-- ITEM -->
-                        <div class="item"><img class="img-fluid" src={{ asset('himara/'.$id->image) }}
+                        <div class="item"><img class="img-fluid" src={{ asset('himara/images/'.$id->image) }}
                                 alt="Image"></div>
                         <!-- ITEM -->
                         <div class="item"><img class="img-fluid" src="{{ asset('himara/images/rooms/single/single2.jpg') }}"
                                 alt="Image"></div>
                         <!-- ITEM -->
-                        <div class="item"><img class="img-fluid" src={{ asset('himara/'.$id->image) }}
+                        <div class="item"><img class="img-fluid" src={{ asset('himara/images/'.$id->image) }}
                                 alt="Image"></div>
                         <!-- ITEM -->
                         <div class="item"><img class="img-fluid" src="{{ asset('himara/images/rooms/single/single4.jpg') }}"
                                 alt="Image"></div>
                         <!-- ITEM -->
-                        <div class="item"><img class="img-fluid" src={{ asset('himara/'.$id->image) }}
+                        <div class="item"><img class="img-fluid" src={{ asset('himara/images/'.$id->image) }}
                                 alt="Image"></div>
                         <!-- ITEM -->
                         <div class="item"><img class="img-fluid" src="{{ asset('himara/images/rooms/single/single6.jpg') }}"
                                 alt="Image"></div>
                         <!-- ITEM -->
-                        <div class="item"><img class="img-fluid" src={{ asset('himara/'.$id->image) }}
+                        <div class="item"><img class="img-fluid" src={{ asset('himara/images/'.$id->image) }}
                                 alt="Image"></div>
                         <!-- ITEM -->
                         <div class="item"><img class="img-fluid" src="{{ asset('himara/images/rooms/single/single8.jpg') }}"
@@ -355,7 +355,7 @@
                             <div class="room-grid-item">
                                 <figure class="gradient-overlay-hover link-icon">
                                     <a href="{{ route('room.show', $item->id) }}">
-                                        <img src={{ asset('himara/' . $item->image) }} class="img-fluid" alt="Image">
+                                        <img src={{ asset('himara/images/' . $item->image) }} class="img-fluid" alt="Image">
                                     </a>
                                     <div class="room-services">
                                         @foreach ($item->tags->take(4) as $tag)

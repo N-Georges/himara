@@ -13,7 +13,7 @@
                     <div class="room-grid-item">
                         <figure class="gradient-overlay-hover link-icon">
                             <a href="{{ route('room.show', $item->id) }}">
-                                <img src={{ asset('himara/' . $item->image) }} class=" img-fluid" alt="Image">
+                                <img src={{ asset('himara/images/' . $item->image) }} class=" img-fluid" alt="Image">
                             </a>
                             <div class="room-services">
                                 @foreach ($item->tags as $tag)

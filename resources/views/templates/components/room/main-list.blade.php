@@ -10,7 +10,7 @@
                                 <div class="col-lg-5">
                                     <figure class="gradient-overlay-hover link-icon">
                                         <a href="{{ route('room.show', $item->id) }}"><img
-                                                src={{ asset('himara/' . $item->image) }} class="img-fluid"
+                                                src={{ asset('himara/images/' . $item->image) }} class="img-fluid"
                                                 alt="Image"></a>
                                     </figure>
                                 </div>
