@@ -38,7 +38,7 @@ class BlogController extends Controller
     {
         $categorie = Categories_blog::all();
         $author = Author::all();
-        return view('admin.blog.create' , compact('categorie', 'author'));
+        return view('admin.blog.create', compact('categorie', 'author'));
     }
 
     /**
@@ -50,12 +50,20 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $blog = new Blog();
-        $blog -> image = $request['image'] = 'images\blog\blog-post1.jpg';
-        $blog -> title = $request->title;
-        $blog -> author_id = $request->author_id;
-        $blog -> categorie_id = $request->categorie_id;
-        $blog -> description = $request->description;
-        $blog -> save();
+
+        //STORAGE
+        $path = 'himara/images/';
+        $file = $request->file('image');
+        $newImage = date('Ymd') . uniqid() . '.jpg';
+        $file->move(public_path($path), $newImage);
+
+
+        $blog->image = $newImage;
+        $blog->title = $request->title;
+        $blog->author_id = $request->author_id;
+        $blog->categorie_id = $request->categorie_id;
+        $blog->description = $request->description;
+        $blog->save();
 
         return redirect()->route('blog.index')->with('success', 'blog create successfuly');
     }
@@ -94,7 +102,22 @@ class BlogController extends Controller
     {
         $this->authorize('isAdmin', $id);
         $blog = $id;
-        $blog->update($request->all());
+
+        //STORAGE
+        $path = 'himara/images/';
+        $file = $request->file('image');
+        $newImage = date('Ymd') . uniqid() . '.jpg';
+        $file->move(public_path($path), $newImage);
+
+        // DB
+        $blog->image = $newImage;
+        $blog->title = $request->title;
+        $blog->author_id = $request->author_id;
+        $blog->categorie_id = $request->categorie_id;
+        $blog->description = $request->description;
+
+        
+        $blog->save();
 
         return redirect()->route('blog.index')->with('success', 'blog update successfuly');
     }

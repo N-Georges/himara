@@ -17,7 +17,7 @@ class BlogSeeder extends Seeder
     {
         DB::table('blogs')->insert([
             [
-                "image" => "images/blog/blog-post1.jpg", 
+                "image" => "blog/blog-post1.jpg", 
                 "title" => "10 Tips for Holiday Travel", 
                 "author_id" => 1,
                 "categorie_id" => 1,
@@ -26,7 +26,7 @@ class BlogSeeder extends Seeder
                 "created_at" => now()
             ],
             [
-                "image" => "images/blog/blog-post2.jpg", 
+                "image" => "blog/blog-post2.jpg", 
                 "title" => "Are you ready to enjoy your holidays", 
                 "author_id" => 2,
                 "categorie_id" => 2,
@@ -35,7 +35,7 @@ class BlogSeeder extends Seeder
                 "created_at" => now()
             ],
             [
-                "image" => "images/blog/blog-post3.jpg", 
+                "image" => "blog/blog-post3.jpg", 
                 "title" => "Honeymoon in Hotel Himara", 
                 "author_id" => 3,
                 "categorie_id" => 3,
@@ -44,7 +44,7 @@ class BlogSeeder extends Seeder
                 "created_at" => now()
             ],
             [
-                "image" => "images/blog/blog-post4.jpg", 
+                "image" => "blog/blog-post4.jpg", 
                 "title" => "Travel Gift Ideas for Every Type of Traveler", 
                 "author_id" => 2,
                 "categorie_id" => 4,
@@ -53,7 +53,7 @@ class BlogSeeder extends Seeder
                 "created_at" => now()
             ],
             [
-                "image" => "images/blog/blog-post5.jpg", 
+                "image" => "blog/blog-post5.jpg", 
                 "title" => "Breakfast with coffee and orange juice", 
                 "author_id" => 1,
                 "categorie_id" => 2,
@@ -62,7 +62,7 @@ class BlogSeeder extends Seeder
                 "created_at" => now()
             ],
             [
-                "image" => "images/blog/blog-post6.jpg", 
+                "image" => "blog/blog-post6.jpg", 
                 "title" => "Running On Sand", 
                 "author_id" => 3,
                 "categorie_id" => 1,
