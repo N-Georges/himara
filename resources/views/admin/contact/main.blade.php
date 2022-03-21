@@ -5,6 +5,6 @@
         </h2>
     </x-slot>
     @section('content')
-       contact page
+       @include('components.table-mail')
     @endsection
 </x-app-layout>

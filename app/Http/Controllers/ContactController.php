@@ -16,30 +16,23 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('admin.contact.main');
+        $mails = Contact::paginate(5);
+        return view('admin.contact.main')->with(compact('mails'));
     }
 
-    public function mailbox()
+    public function mail_search(Request $request)
     {
-        $mails = Contact::all();
-        return view('layouts.back')->with(compact('mails'));;
+
+        $search = '%' . $request->search . '%';
+        $mails = Contact::where('name', 'like', "%$search%")
+            ->orWhere('email', 'like', $search)
+            ->orWhere('phone', 'like', $search)
+            ->orWhere('subject', 'like', $search)
+            ->orWhere('msg', 'like', $search)
+            ->orWhere('created_at', 'like', $search)
+            ->paginate(100);
+        return view("admin.contact.main", compact('mails'));
     }
-
-    // public function sendEmail(Request $request)
-    // {
-    //     $details = [
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'phone' => $request->phone,
-    //         'msg' => $request->msg,
-    //     ];
-
-    //     Mail::to('ngeorges.dev@gmail.com')->send(new ContactMail($details));
-
-    //     return back()->with('message sent','Your message as been sent successfuly');
-    // }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -99,11 +92,13 @@ class ContactController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $this->authorize('isAdmin', $id);
+        $id = Contact::findOrFail($id);
+        $id->delete();
+        return Redirect()->route('contact.index')->with('warning', 'mail delete');
     }
 }

@@ -73,7 +73,6 @@
             </div>
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-            @include('components.mailbox')
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button

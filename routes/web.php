@@ -120,6 +120,8 @@ Route::controller(GalleryController::class)
 Route::controller(ContactController::class)
     ->group(function () {
         Route::get('/dashboard/contact', 'index')->middleware(['auth', 'IsAdmin'])->name('contact.index');
+        Route::post('/dashboard/contact', 'mail_search')->middleware(['auth', 'IsAdmin'])->name('contact.search');
+        Route::delete('/dashboard/contact/{id}/delete',  'destroy')->middleware(['auth', 'IsAdmin'])->name('contact.destroy');
     });
 
 // ROUTE GROUP FOR PROFILECONTROLLER   

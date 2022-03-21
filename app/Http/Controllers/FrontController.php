@@ -157,15 +157,17 @@ class FrontController extends Controller
     public function sendEmail(Request $request)
     {
         $mail = new Contact();
-
+        
         $mail->name = $request->name;
         $mail->email = $request->email;
         $mail->phone = $request->phone;
         $mail->subject = $request->subject;
         $mail->msg = $request->msg;
 		$mail->save();
+        $sender = $mail->email = $request->email;
 
         Mail::to('ngeorges.dev@gmail.com')->send(new ContactMail($mail));
+        Mail::to($sender)->send(new ContactMail($mail));
 
         return back()->with('message sent','Your message as been sent successfuly');
     }

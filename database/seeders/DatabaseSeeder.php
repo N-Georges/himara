@@ -34,5 +34,6 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
         ]);
         \App\Models\User::factory(20)->create();
+        \App\Models\Contact::factory(10)->create();
     }
 }
