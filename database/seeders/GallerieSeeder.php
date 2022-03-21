@@ -17,97 +17,97 @@ class GallerieSeeder extends Seeder
     {
         DB::table('galleries')->insert([
             [
-                "image" => "images/gallery/gallery1.jpg", 
+                "image" => "gallery/gallery1.jpg", 
                 "name" => "Swimming Pool", 
                 "tag_gallerie_id" => 2,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery2.jpg", 
+                "image" => "gallery/gallery2.jpg", 
                 "name" => "Room View", 
                 "tag_gallerie_id" => 4,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery3.jpg", 
+                "image" => "gallery/gallery3.jpg", 
                 "name" => "Cocktail", 
                 "tag_gallerie_id" => 1,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery4.jpg", 
+                "image" => "gallery/gallery4.jpg", 
                 "name" => "Breakfast", 
                 "tag_gallerie_id" => 1,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery5.jpg", 
+                "image" => "gallery/gallery5.jpg", 
                 "name" => "Playground", 
                 "tag_gallerie_id" => 2,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery6.jpg", 
+                "image" => "gallery/gallery6.jpg", 
                 "name" => "Restaurant", 
                 "tag_gallerie_id" => 1,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery7.jpg", 
+                "image" => "gallery/gallery7.jpg", 
                 "name" => "Wedding Ceremony", 
                 "tag_gallerie_id" => 1,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery8.jpg", 
+                "image" => "gallery/gallery8.jpg", 
                 "name" => "Beach", 
                 "tag_gallerie_id" => 4,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery9.jpg", 
+                "image" => "gallery/gallery9.jpg", 
                 "name" => "Honeymoon Room", 
                 "tag_gallerie_id" => 4,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery10.jpg", 
+                "image" => "gallery/gallery10.jpg", 
                 "name" => "Sea", 
                 "tag_gallerie_id" => 4,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery11.jpg", 
+                "image" => "gallery/gallery11.jpg", 
                 "name" => "Spa Therapy", 
                 "tag_gallerie_id" => 3,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery12.jpg", 
+                "image" => "gallery/gallery12.jpg", 
                 "name" => "Restaurant", 
                 "tag_gallerie_id" => 1,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery13.jpg", 
+                "image" => "gallery/gallery13.jpg", 
                 "name" => "Restaurant", 
                 "tag_gallerie_id" => 4,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery14.jpg", 
+                "image" => "gallery/gallery14.jpg", 
                 "name" => "Sea", 
                 "tag_gallerie_id" => 2,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery15.jpg", 
+                "image" => "gallery/gallery15.jpg", 
                 "name" => "Restaurant", 
                 "tag_gallerie_id" => 1,
                 "created_at" => now()
             ],
             [
-                "image" => "images/gallery/gallery16.jpg", 
+                "image" => "gallery/gallery16.jpg", 
                 "name" => "Room View", 
                 "tag_gallerie_id" => 4,
                 "created_at" => now()

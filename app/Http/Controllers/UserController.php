@@ -116,6 +116,7 @@ class UserController extends Controller
     public function destroy(User $id)
     {
         $this->authorize('isAdmin', $id);
+        // dd($id);
         $id->delete();
         return Redirect()->route('user.index')->with('warning', 'user delete');
     }

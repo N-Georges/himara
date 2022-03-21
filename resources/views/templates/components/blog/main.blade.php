@@ -107,7 +107,7 @@
                       <div class="sidebar">
                           <aside class="widget noborder">
                               <div class="search">
-                                  <form class="widget-search" action="{{ route('blog') }}" method="POST">
+                                  <form class="widget-search" action="{{ route('blogFront.search') }}" method="POST">
                                       @csrf
                                       <input type="search" placeholder="Search" name="search">
                                       <button class="btn-search" id="searchsubmit" type="submit">

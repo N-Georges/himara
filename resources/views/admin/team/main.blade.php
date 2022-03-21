@@ -5,6 +5,6 @@
         </h2>
     </x-slot>
     @section('content')
-       team page
+        @include('components.table-team')
     @endsection
 </x-app-layout>

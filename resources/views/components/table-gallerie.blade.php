@@ -4,7 +4,7 @@
         <div class=" flex items-center justify-between pb-6">
             <div>
                 <div class="pt-2 relative mx-auto text-gray-600">
-                    <form class="widget-search" action="{{ route('user.search') }}" method="POST">
+                    <form class="widget-search" action="{{ route('gallery.search') }}" method="POST">
                         @csrf
                         <input
                             class="border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
@@ -23,12 +23,15 @@
             </div>
             <div class="flex items-center justify-between">
                 <div class="lg:ml-40 ml-10 space-x-8 flex">
-                    <a href="{{ route('user.index') }}"
+                    <a href="{{ route('gallery.index') }}"
                         class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">all
-                        user</a>
-                    <a href="{{ route('user.create') }}"
+                        gallery</a>
+                    <a href="{{ route('galleryTag.create') }}"
                         class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">create
-                        user</a>
+                        tag</a>
+                    <a href="{{ route('gallery.create') }}"
+                        class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">create
+                        gallery</a>
                 </div>
             </div>
         </div>
@@ -40,15 +43,15 @@
                             <tr>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Image
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                     Name
                                 </th>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Email
-                                </th>
-                                <th
-                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                    Role
+                                    Tag
                                 </th>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
@@ -57,70 +60,56 @@
                             </tr>
                         </thead>
                         <tbody>
-
-                            @foreach ($user as $item)
+                            @foreach ($gallery as $item)
                                 <tr>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <div class="flex items-center">
-                                            <div class="flex-shrink-0 w-10 h-10">
-                                                <img class="w-full h-full rounded-full"
-                                                    src="{{ asset('himara/images/users/user.jpg') }}" alt="" />
-                                            </div>
-                                            <div class="ml-3">
-                                                <p class="text-gray-900 whitespace-no-wrap">
-                                                    {{ $item->name }}
-                                                </p>
-                                            </div>
+                                        <div class="flex-shrink-0 w-10 h-10">
+                                            <img class="w-full h-full rounded-full"
+                                                src={{ asset('himara/images/' . $item->image) }} alt="" />
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">{{ $item->email }}</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $item->name }}
+                                        </p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <span
-                                            class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                            <span aria-hidden
-                                                class="absolute inset-0 bg-green-200 opacity-50 rounded-full"></span>
-                                            <span class="relative font-bold">{{ $item->role->role_name }}</span>
-                                        </span>
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ $item->tag_gallerie->name }}
+                                        </p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        @if ($item->role->role_name === 'user')
-                                            <div class="flex">
-                                                <a class="mr-5"
-                                                    href="{{ route('user.edit', $item->id) }}"><svg
-                                                        class="w-6 h-6" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <div class="flex">
+                                            <a href="{{ route('gallery.edit', $item->id) }}"
+                                                class="mr-5"><svg class="w-6 h-6" fill="none"
+                                                    stroke="currentColor" viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                                                    </path>
+                                                </svg></a>
+                                            <form action="{{ route('gallery.destroy', $item->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-600"><svg class="w-6 h-6"
+                                                        fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                                        xmlns="http://www.w3.org/2000/svg">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             stroke-width="2"
-                                                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
                                                         </path>
-                                                    </svg></a>
-
-                                                <form action="{{ route('user.destroy', $item->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="text-red-600"><svg
-                                                            class="w-6 h-6" fill="none" stroke="currentColor"
-                                                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2"
-                                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
-                                                            </path>
-                                                        </svg></button>
-                                                </form>
-                                            </div>
-                                        @endif
+                                                    </svg></button>
+                                            </form>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
 
                         </tbody>
                     </table>
-                    {{-- @include('components.delete-user-modal') --}}
-                    <!-- component -->
                     <div class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-right xs:justify-between">
-                        {{ $user->links('pagination::tailwind') }}
+                        {{ $gallery->links('pagination::tailwind') }}
                     </div>
                 </div>
             </div>

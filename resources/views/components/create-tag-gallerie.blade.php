@@ -8,14 +8,14 @@
                 </div>
             </div>
             <div class="mt-5 md:mt-0 md:col-span-2 ">
-                <form method="POST" action="{{ route('blogCat.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('galleryTag.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
                                 <div class="col-span-6 sm:col-span-3">
-                                    <label for="city" class="block text-sm font-medium text-gray-700">Categorie</label>
-                                    <input type="name" name="name" id="city" autocomplete="name"
+                                    <label for="city" class="block text-sm font-medium text-gray-700">Tag</label>
+                                    <input type="name" name="name" id="name" autocomplete="name"
                                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                                 </div>
                             </div>

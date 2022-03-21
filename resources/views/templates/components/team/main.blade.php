@@ -7,7 +7,7 @@
                       <div class="col-lg-3 col-md-6">
                           <div class="staff-item">
                               <figure>
-                                  <img src={{ asset('himara/' . $item->image) }} class="img-fluid" alt="Image">
+                                  <img src={{ asset('himara/images/' . $item->image) }} class="img-fluid" alt="Image">
                                   <div class="position">{{ $item->job }}</div>
                               </figure>
                               <div class="details">

@@ -35,9 +35,10 @@ Route::controller(FrontController::class)
         Route::post('/room-list', 'room_search')->name('room');
         Route::get('/room-list/tag/{id}', 'room_tag')->name('tag');
         Route::get('/room-list/{id}/show', 'room_show')->name('room.show');
+
         // BLOG
         Route::get('/blog', 'blog')->name('blog');
-        Route::post('/blog', 'blog_search')->name('blog');
+        Route::post('/blog', 'blog_search')->name('blogFront.search');
         Route::get('/blog/categorie/{id}', "blog_categorie")->name('blog.categorie');
         Route::get('/blog/{id}/show', 'blog_show')->name('blog.show');
         Route::get('/blog/tag/{id}', 'blog_tag')->name('blog.tag');
@@ -93,12 +94,26 @@ Route::controller(BlogController::class)
 Route::controller(TeamController::class)
     ->group(function () {
         Route::get('/dashboard/team', 'index')->middleware(['auth', 'IsAdmin'])->name('team.index');
+        Route::post('/dashboard/team', 'team_search')->middleware(['auth', 'IsAdmin'])->name('team.search');
+        Route::get('/dashboard/team/{id}/edit', 'edit')->middleware(['auth', 'IsAdmin'])->name('team.edit');
+        Route::put('/dashboard/team/{id}/update', 'update')->middleware(['auth', 'IsAdmin'])->name('team.update');
+        Route::get('/dashboard/team/create', 'create')->middleware(['auth', 'IsAdmin'])->name('team.create');
+        Route::post('/dashboard/team/store', 'store')->middleware(['auth', 'IsAdmin'])->name('team.store');
+        Route::delete('/dashboard/team/{id}/delete',  'destroy')->middleware(['auth', 'IsAdmin'])->name('team.destroy');
     });
 
 // ROUTE GROUP FOR GALLERYCONTROLLER
 Route::controller(GalleryController::class)
     ->group(function () {
         Route::get('/dashboard/gallery', 'index')->middleware(['auth', 'IsAdmin'])->name('gallery.index');
+        Route::post('/dashboard/gallery', 'gallery_search')->middleware(['auth', 'IsAdmin'])->name('gallery.search');
+        Route::get('/dashboard/gallery/{id}/edit', 'edit')->middleware(['auth', 'IsAdmin'])->name('gallery.edit');
+        Route::put('/dashboard/gallery/{id}/update', 'update')->middleware(['auth', 'IsAdmin'])->name('gallery.update');
+        Route::get('/dashboard/gallery/create', 'create')->middleware(['auth', 'IsAdmin'])->name('gallery.create');
+        Route::post('/dashboard/gallery/store', 'store')->middleware(['auth', 'IsAdmin'])->name('gallery.store');
+        Route::get('/dashboard/gallery/tag/create', 'createTag')->middleware(['auth', 'IsAdmin'])->name('galleryTag.create');
+        Route::post('/dashboard/gallery/tag/store', 'storeTag')->middleware(['auth', 'IsAdmin'])->name('galleryTag.store');
+        Route::delete('/dashboard/gallery/{id}/delete',  'destroy')->middleware(['auth', 'IsAdmin'])->name('gallery.destroy');
     });
     
 // ROUTE GROUP FOR CONTACTCONTROLLER

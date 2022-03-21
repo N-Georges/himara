@@ -17,49 +17,49 @@ class TeamSeeder extends Seeder
     {
         DB::table('teams')->insert([
             [
-                "image" => 'images/staff/staff1.jpg',
+                "image" => 'staff/staff1.jpg',
                 "name" => 'Jeanette Owens',
                 "job" => 'Housekeeper',
                 "description" => 'Lorem Ipsum which looks many web sites pass websites is therefore always.',
             ],
             [
-                "image" => 'images/staff/staff2.jpg',
+                "image" => 'staff/staff2.jpg',
                 "name" => 'Henry Garrett',
                 "job" => 'Receptionist',
                 "description" => 'Lorem Ipsum which looks many web sites pass websites is therefore always.',
             ],
             [
-                "image" => 'images/staff/staff3.jpg',
+                "image" => 'staff/staff3.jpg',
                 "name" => 'Tommy Alexander',
                 "job" => 'Chef',
                 "description" => 'Lorem Ipsum which looks many web sites pass websites is therefore always.',
             ],
             [
-                "image" => 'images/staff/staff4.jpg',
+                "image" => 'staff/staff4.jpg',
                 "name" => 'Penny Soto',
                 "job" => 'Hotel Manager',
                 "description" => 'Lorem Ipsum which looks many web sites pass websites is therefore always.',
             ],
             [
-                "image" => 'images/staff/staff5.jpg',
+                "image" => 'staff/staff5.jpg',
                 "name" => 'Alex Cox',
                 "job" => 'Room Service',
                 "description" => 'Lorem Ipsum which looks many web sites pass websites is therefore always.',
             ],
             [
-                "image" => 'images/staff/staff6.jpg',
+                "image" => 'staff/staff6.jpg',
                 "name" => 'Alfredo Romero',
                 "job" => 'Hotel Manager',
                 "description" => 'Lorem Ipsum which looks many web sites pass websites is therefore always.',
             ],
             [
-                "image" => 'images/staff/staff7.jpg',
+                "image" => 'staff/staff7.jpg',
                 "name" => 'Glenda Gilbert',
                 "job" => 'Marketing Advisor',
                 "description" => 'Lorem Ipsum which looks many web sites pass websites is therefore always.',
             ],
             [
-                "image" => 'images/staff/staff8.jpg',
+                "image" => 'staff/staff8.jpg',
                 "name" => 'Sheila Carter',
                 "job" => 'Hotel Manager',
                 "description" => 'Lorem Ipsum which looks many web sites pass websites is therefore always.',
