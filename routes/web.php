@@ -84,6 +84,8 @@ Route::controller(BlogController::class)
         Route::put('/dashboard/blog/{id}/update', 'update')->middleware(['auth', 'IsAdmin'])->name('blog.update');
         Route::get('/dashboard/blog/create', 'create')->middleware(['auth', 'IsAdmin'])->name('blog.create');
         Route::post('/dashboard/blog/store', 'store')->middleware(['auth', 'IsAdmin'])->name('blog.store');
+        Route::get('/dashboard/blog/categorie/create', 'createCat')->middleware(['auth', 'IsAdmin'])->name('blogCat.create');
+        Route::post('/dashboard/blog/categorie/store', 'storeCat')->middleware(['auth', 'IsAdmin'])->name('blogCat.store');
         Route::delete('/dashboard/blog/{id}/delete',  'destroy')->middleware(['auth', 'IsAdmin'])->name('blog.destroy');
     });
 

@@ -18,22 +18,22 @@ class TagGallerieSeeder extends Seeder
         DB::table('tag_galleries')->insert([
             [
                 "name" => "restaurant",
-                "filter" => "filter-restaurant",
+                "filter" => "restaurant",
                 "created_at" => now()
             ],
             [
                 "name" => "swimming pool",
-                "filter" => "filter-swimmingpool",
+                "filter" => "swimmingpool",
                 "created_at" => now()
             ],
             [
                 "name" => "spa",
-                "filter" => "filter-spa",
+                "filter" => "spa",
                 "created_at" => now()
             ],
             [
                 "name" => "room view",
-                "filter" => "filter-roomview",
+                "filter" => "roomview",
                 "created_at" => now()
             ],
             

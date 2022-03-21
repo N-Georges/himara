@@ -68,6 +68,27 @@ class BlogController extends Controller
         return redirect()->route('blog.index')->with('success', 'blog create successfuly');
     }
 
+
+
+    public function createCat()
+    {
+        return view('admin.blog.categorie.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeCat(Request $request)
+    {
+        $blog = new Categories_blog();
+        $blog->name = $request->name;
+        $blog->save();
+
+        return redirect()->route('blog.index')->with('success', 'blog categorie create successfuly');
+    }
     /**
      * Display the specified resource.
      *
