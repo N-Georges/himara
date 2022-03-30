@@ -33,6 +33,9 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,600,700%7CRoboto:100,300,400,400i,500,700"
         rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.9.1/cdn.js"></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+
 </head>
 
 <body>
@@ -43,7 +46,7 @@
         @include('templates.components.top-menu')
         <!-- ========== HEADER ========== -->
         @include('templates.components.header')
-
+        @include('layouts.flash-boostrap')
         @yield('main')
         <!-- ========== FOOTER ========== -->
         @include('templates.components.footer')
@@ -51,11 +54,20 @@
         @include('templates.components.back-to-top')
     </div>
 
-
-
+<script src="https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js"></script>
+    <script>
+        
+        L.mapbox.accessToken =
+            'pk.eyJ1IjoibW9wZXNvbm9odSIsImEiOiJjbDEyNmo1bzIzMTZ5M2Rxb2R2aHhpcGxqIn0.tI2eAdR1pJLmnh8wRfyefw';
+            
+        var map = L.mapbox.map('map-canvas')
+            .setView([50.85616864124496, 4.34138976137574], 15)
+            .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+        // L.marker is a low-level marker constructor in Leaflet.
+        L.marker([50.85616864124496, 4.34138976137574]).addTo(map);
+    </script>
     <!-- ========== JAVASCRIPT ========== -->
     <script src="{{ asset('himara/js/jquery.min.js') }}"></script>
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyDkWCHsVOixZWDtRwKEzXcEi1nCZUOdnJY"></script>
     <script src="{{ asset('himara/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('himara/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('himara/js/jquery.mmenu.js') }}"></script>

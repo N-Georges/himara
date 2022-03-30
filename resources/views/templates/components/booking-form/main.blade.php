@@ -14,33 +14,35 @@
                         repellendus
                         illo consequuntur amet similique hic.</p>
                     <!-- BOOKING FORM -->
-                    <form class="booking-form-advanced" id="booking-form">
+                    
+                    <form class="booking-form-advanced" action="{{ route('bookings.store') }}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Your Name</label>
-                                    <input name="booking-name" type="text" class="form-control"
-                                        placeholder="Your Name">
+                                    <input value="{{ Auth::user()->name }}" name="name" type="text"
+                                        class="form-control" placeholder="Your Name">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Email Address</label>
-                                    <input class="form-control" name="booking-email" type="email"
-                                        placeholder="Your Email Address">
+                                    <input value="{{ Auth::user()->email }}" class="form-control" name="email"
+                                        type="email" placeholder="Your Email Address">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Phone Number</label>
-                                    <input name="booking-phone" type="text" class="form-control"
+                                    <input name="phone" type="text" class="form-control"
                                         placeholder="Your Phone Number">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Country</label>
-                                    <select name="booking-country" class="form-control" title="Select Your Country"
+                                    <select name="country" class="form-control" title="Select Your Country"
                                         data-header="Select Your Country" data-live-search="true" data-size="5">
                                         <option value="Afganistan">Afghanistan</option>
                                         <option value="Albania">Albania</option>
@@ -328,13 +330,13 @@
                                                 </label>
                                                 <div class="guests-button">
                                                     <div class="minus"></div>
-                                                    <input type="text" name="booking-adults" class="booking-guests"
+                                                    <input type="text" name="adult" class="booking-guests"
                                                         value="0">
                                                     <div class="plus"></div>
                                                 </div>
                                             </div>
                                             <div class="guests-buttons">
-                                                <label>Cildren
+                                                <label>Children
                                                     <a href="#" title="" data-toggle="popover" data-placement="top"
                                                         data-trigger="hover" data-content="Under 18 years"
                                                         data-original-title="Children">
@@ -343,7 +345,7 @@
                                                 </label>
                                                 <div class="guests-button">
                                                     <div class="minus"></div>
-                                                    <input type="text" name="booking-children" class="booking-guests"
+                                                    <input type="text" name="children" class="booking-guests"
                                                         value="0">
                                                     <div class="plus"></div>
                                                 </div>
@@ -355,26 +357,21 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Room Type</label>
-                                    <select name="booking-roomtype" class="form-control" title="Select Room Type"
+                                    <select name="categorie_id" class="form-control" title="Select Room Type"
                                         data-header="Select Room Type">
-                                        <option value="Single Room"
+                                        @foreach ($categorie as $item)
+                                        <option value="{{ $item->id }}"
                                             data-subtext="<span class='badge badge-info'>€89 / night</span>">
-                                            Single Room
+                                            {{ $item->name }}
                                         </option>
-                                        <option value="Double Room"
-                                            data-subtext="<span class='badge badge-info'>€129 / night</span>">
-                                            Double Room</option>
-                                        <option value="Deluxe Room"
-                                            data-subtext="<span class='badge badge-info'>€89 / night</span>">
-                                            Deluxe Room</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Your Comments</label>
-                                    <textarea class="form-control" name="booking-comments"
-                                        placeholder="Your Comments..."></textarea>
+                                    <textarea class="form-control" name="comment" placeholder="Your Comments..."></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -397,7 +394,8 @@
                             <div class="offer-item sm mb50">
                                 <figure class="gradient-overlay-hover link-icon">
                                     <a href="offer.html">
-                                        <img src="images/offers/offer1.jpg" class="img-fluid" alt="Image">
+                                        <img src="{{ asset('himara/images/offers/offer1.jpg') }}"
+                                            class="img-fluid" alt="Image">
                                     </a>
                                 </figure>
                                 <div class="ribbon">
@@ -414,7 +412,8 @@
                             <div class="offer-item sm mb50">
                                 <figure class="gradient-overlay-hover link">
                                     <a href="offer.html">
-                                        <img src="images/offers/offer2.jpg" class="img-fluid" alt="Image">
+                                        <img src="{{ asset('himara/images/offers/offer2.jpg') }}"
+                                            class="img-fluid" alt="Image">
                                     </a>
                                 </figure>
                                 <div class="ribbon">
@@ -431,7 +430,8 @@
                             <div class="offer-item sm mb50">
                                 <figure class="gradient-overlay-hover link">
                                     <a href="offer.html">
-                                        <img src="images/offers/offer3.jpg" class="img-fluid" alt="Image">
+                                        <img src="{{ asset('himara/images/offers/offer3.jpg') }}"
+                                            class="img-fluid" alt="Image">
                                     </a>
                                 </figure>
                                 <div class="ribbon">

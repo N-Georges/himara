@@ -14,7 +14,7 @@
                 @if (Session::get('message sent'))
                     <div class="alert alert-success" role="alert">{{ Session::get('message sent') }}</div>
                 @endif
-                <form  method="POST" action="{{ route('contact.send') }}" class="contact-form" >
+                <form method="POST" action="{{ route('contact.send') }}" class="contact-form">
                     @csrf
                     <div class="form-group">
                         <input class="form-control" name="name" placeholder="Name*" type="text">
@@ -38,9 +38,10 @@
             </div>
             <div class="col-md-4">
                 <div class="sidebar">
+                    {{-- <div id='map'></div> --}}
                     <div class="google-map">
                         <div class="toggle-streetview" id="openStreetView">
-                            
+
                             <i class="fa fa-street-view" aria-hidden="true"></i>
                         </div>
                         <div id="map-canvas"></div>

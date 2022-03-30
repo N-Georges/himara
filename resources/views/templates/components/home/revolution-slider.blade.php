@@ -5,9 +5,9 @@
             <!-- SLIDE NR. 1 -->
             <li data-transition="crossfade">
                 <!-- MAIN IMAGE -->
-                <img src="{{ asset('himara/images/slider/slider1.jpg') }}" alt="Image" title="Image" data-bgposition="center center"
-                    data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
-                    data-no-retina="">
+                <img src="{{ asset('himara/images/slider/slider1.jpg') }}" alt="Image" title="Image"
+                    data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10"
+                    class="rev-slidebg" data-no-retina="">
                 <!-- LAYER NR. 1 -->
                 <h1 class="tp-caption tp-resizeme" data-x="center" data-hoffset="" data-y="320" data-voffset=""
                     data-responsive_offset="on" data-fontsize="['80','50','40','30']"
@@ -60,9 +60,9 @@
             <!-- SLIDE NR. 2 -->
             <li data-transition="crossfade">
                 <!-- MAIN IMAGE -->
-                <img src="{{ asset('himara/images/slider/slider3.jpg') }}" alt="Image" title="Image" data-bgposition="center center"
-                    data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
-                    data-no-retina="">
+                <img src="{{ asset('himara/images/slider/slider3.jpg') }}" alt="Image" title="Image"
+                    data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10"
+                    class="rev-slidebg" data-no-retina="">
                 <!-- LAYER NR. 1 -->
                 <div class="tp-caption tp-resizeme" data-x="center" data-hoffset="" data-y="320" data-voffset=""
                     data-responsive_offset="on" data-fontsize="['70','50','40','25']"
@@ -80,9 +80,9 @@
             <!-- SLIDE NR. 3 -->
             <li data-transition="crossfade">
                 <!-- MAIN IMAGE -->
-                <img src="{{ asset('himara/images/slider/slider13.jpg') }}" alt="Image" title="Image" data-bgposition="center center"
-                    data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
-                    data-no-retina="">
+                <img src="{{ asset('himara/images/slider/slider13.jpg') }}" alt="Image" title="Image"
+                    data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="10"
+                    class="rev-slidebg" data-no-retina="">
                 <!-- LAYER NR. 1 -->
                 <div class="tp-caption tp-resizeme" data-x="center" data-hoffset="" data-y="305" data-voffset=""
                     data-responsive_offset="on" data-fontsize="['80','70','60','40']"
@@ -116,8 +116,15 @@
                                         <i class="fa fa-info-circle"></i>
                                     </a>
                                 </label>
-                                <input class="form-control" name="booking-name" type="text" data-trigger="hover"
-                                    placeholder="Write Your Name">
+                                @auth
+
+                                    <input value="{{ Auth::user()->name }}" class="form-control" name="name" type="text"
+                                        data-trigger="hover" placeholder="Write Your Name">
+                                @else
+                                    <input class="form-control" name="name" type="text" data-trigger="hover"
+                                        placeholder="Write Your Name">
+                                @endauth
+
                             </div>
                         </div>
                         <!-- EMAIL -->
@@ -129,8 +136,14 @@
                                         <i class="fa fa-info-circle"></i>
                                     </a>
                                 </label>
-                                <input class="form-control" name="booking-email" type="email"
-                                    placeholder="Write your Email">
+                                @auth
+                                    <input value="{{ Auth::user()->email }}" class="form-control" name="booking-email"
+                                        type="email" placeholder="Write your Email">
+                                @else
+                                    <input class="form-control" name="booking-email" type="email"
+                                        placeholder="Write your Email">
+                                @endauth
+
                             </div>
                         </div>
                         <!-- ROOM TYPE -->
@@ -144,9 +157,9 @@
                                 </label>
                                 <select class="form-control" name="booking-roomtype" title="Select Room Type"
                                     data-header="Room Type">
-                                    <option value="Single">Single Room</option>
-                                    <option value="Double">Double Room</option>
-                                    <option value="Deluxe">Deluxe Room</option>
+                                    @foreach ($categorie as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -194,7 +207,7 @@
                                             </div>
                                         </div>
                                         <div class="guests-buttons">
-                                            <label>Cildren
+                                            <label>Children
                                                 <a href="#" title="" data-toggle="popover" data-placement="top"
                                                     data-trigger="hover" data-content="Under 18 years"
                                                     data-original-title="Children">

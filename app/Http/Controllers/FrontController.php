@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\ContactMail;
 use App\Models\Blog;
+use App\Models\Booking;
 use App\Models\Categorie;
 use App\Models\Categories_blog;
 use App\Models\Comment;
@@ -15,8 +16,11 @@ use App\Models\Tag;
 use App\Models\TagBlog;
 use App\Models\TagGallerie;
 use App\Models\Team;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+
+use function GuzzleHttp\Promise\all;
 
 class FrontController extends Controller
 {
@@ -27,7 +31,8 @@ class FrontController extends Controller
         $gallerie = Gallerie::all(); 
         $blogLast = Blog::latest('created_at')->take(3)->get();
         $service = Service::all();
-        return view('home', compact('room', 'blogLast', 'comment', 'gallerie', 'service'));
+        $categorie = Categorie::all();
+        return view('home', compact('room', 'blogLast', 'comment', 'gallerie', 'service', 'categorie'));
     }
 
     ################################# ROOM
@@ -174,7 +179,40 @@ class FrontController extends Controller
 
     public function booking_form()
     {
-        return view('booking-form');
+        $categorie = Categorie::all();
+        return view('booking-form', compact('categorie'));
+    }
+
+    public function booking_store(Request $request)
+    {
+        $request->validate([
+            'name' => ['required'],
+            'email' => ['required'],
+            'booking_date' => ['required'],
+            'adult' => ['required'],
+            'children' => ['required'],
+        ]);
+        // dd($request->booking_date);
+        $dates = explode(' - ', $request->booking_date);
+        // dd($dates);
+        $start = $dates[0];
+        $end = $dates[1];
+        $booking = new Booking();
+        $booking->name = $request->name;
+        $booking->email = $request->email;
+        $booking->start = Carbon::parse($start);
+        $booking->end = Carbon::parse($end);
+        $booking->adult = $request->adult;
+        $booking->children = $request->children;
+        $booking->comment = $request->comment;
+        $booking->phone = $request->phone;
+        $booking->country = $request->country;
+        // $booking->valide = false;
+        $booking->categorie_id = $request->categorie_id;
+        dd($booking);
+
+        $booking->save();
+        return back()->with('success', 'Booking room successfuly');
     }
     public function dashboard()
     {

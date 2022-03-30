@@ -11,8 +11,8 @@
             @foreach ($gallerie as $item)
                 <div class="gallery-item">
                     <figure class="gradient-overlay image-icon">
-                        <a href="{{ asset('himara/' . $item->image) }}">
-                            <img src={{ asset('himara/' . $item->image) }} alt="Image">
+                        <a href="{{ asset('himara/images/' . $item->image) }}">
+                            <img src={{ asset('himara/images/' . $item->image) }} alt="Image">
                         </a>
                         <figcaption>{{ $item->name }}</figcaption>
                     </figure>

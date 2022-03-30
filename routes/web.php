@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FrontController;
@@ -47,8 +48,11 @@ Route::controller(FrontController::class)
         Route::get('/gallery', 'gallery')->name('gallery');
         Route::get('/contact', 'contact')->name('contact');
         Route::post('/send-message', 'sendEmail')->name('contact.send');
-        Route::get('/booking-form', 'booking_form')->middleware(['auth'])->name('booking-form');
+        Route::get('/booking-form', 'booking_form')->name('booking-form');
         Route::get('/dashboard', 'dashboard')->middleware(['auth', 'IsAdmin'])->name('dashboard');
+
+        Route::get('/booking-form', 'booking_form')->middleware(['auth'])->name('booking-form');
+        Route::post('/booking-form/store', 'booking_store')->middleware(['auth'])->name('booking.store');
     });
 
 // COMMENT
@@ -142,6 +146,14 @@ Route::controller(UserController::class)
         Route::get('/dashboard/user/create', 'create')->middleware(['auth', 'IsAdmin'])->name('user.create');
         Route::post('/dashboard/user/store', 'store')->middleware(['auth', 'IsAdmin'])->name('user.store');
         Route::delete('/dashboard/user/{id}/delete',  'destroy')->middleware(['auth', 'IsAdmin'])->name('user.destroy');
+    });
+
+    // ROUTE GROUP FOR BookingController
+Route::controller(BookingController::class)
+    ->group(function () {
+        // Route::get('/booking-form', 'index')->middleware(['auth'])->name('booking');
+        Route::get('/booking-form', 'booking_form')->middleware(['auth'])->name('booking-form');
+        Route::post('/booking-form/store', 'store')->middleware(['auth'])->name('bookings.store');
     });
 
 require __DIR__ . '/auth.php';
